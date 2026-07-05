@@ -10,8 +10,6 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "moduleResolution": "bundler",
-    "verbatimModuleSyntax": false,
-    "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
     "strict": false,
@@ -27,7 +25,6 @@
     }
   },
   "include": [
-    "src",
-    "api"
+    "src"
   ]
 }
