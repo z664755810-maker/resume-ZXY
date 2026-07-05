@@ -7,7 +7,7 @@ const Header = () => {
         <div className="relative">
           <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white/30 shadow-lg">
             <img 
-              src="/zxy.jpg" 
+              src={`${import.meta.env.BASE_URL}zxy.jpg`} 
               alt="郑鑫源" 
               className="w-full h-full object-cover"
               style={{ objectPosition: 'center 35%' }}
