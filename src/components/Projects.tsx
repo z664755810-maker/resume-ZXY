@@ -1,0 +1,150 @@
+import { useState } from 'react';
+import { FolderOpen, ChevronDown, ChevronUp, Cpu, Globe, ShoppingCart } from 'lucide-react';
+
+interface Project {
+  id: number;
+  icon: typeof Cpu;
+  title: string;
+  role: string;
+  period: string;
+  techStack: string[];
+  highlights: string[];
+  expanded: boolean;
+}
+
+const projects: Project[] = [
+  {
+    id: 1,
+    icon: Cpu,
+    title: '基于Hi3861的独居老人居家安全监护系统',
+    role: '项目负责人',
+    period: '2026.06',
+    techStack: ['Hi3861', 'OpenHarmony LiteOS-M', 'C', 'TCP/IP', 'JSON', 'WiFi'],
+    highlights: [
+      '独立完成MQ-2烟雾传感器、PIR人体红外传感器、蜂鸣器PWM驱动、按键检测等模块的驱动开发与调试',
+      '设计并实现TCP Server通信模块，定义基于Socket的JSON数据交互协议，支持设备端状态推送与远程控制指令接收',
+      '设计居家/离家双模式智能报警逻辑：居家模式30秒无活动触发跌倒预警，离家模式检测活动触发入侵报警',
+      '解决GPIO09引脚资源冲突、TCP长连接频繁断连（SO_KEEPALIVE机制）、按键信号抖动（下降沿检测替代电平检测）等技术难题',
+      '项目成果：烟雾超标时推送报警数据；双模式报警逻辑验证通过；编写完整项目开发文档'
+    ],
+    expanded: false
+  },
+  {
+    id: 2,
+    icon: Cpu,
+    title: '基于STC89C52的智能温控安防系统开发',
+    role: '项目负责人',
+    period: '2024.03 – 2024.05',
+    techStack: ['C', 'Keil4', 'STC89C52'],
+    highlights: [
+      '独立完成系统全流程开发，外接HC-SR501红外传感器与DS18B20温度传感器，利用ULN2003芯片驱动直流电机，构建声、光、物理动作三重报警机制',
+      '在8位单片机上优化任务调度，确保长期运行内存占用率<80%，CPU利用率<70%',
+      '自主设计"温度超标+人体入侵"双条件触发逻辑，提升系统安防层级'
+    ],
+    expanded: false
+  },
+  {
+    id: 3,
+    icon: Globe,
+    title: '京东电子商品物流系统 · 进销存管理平台',
+    role: '全栈开发工程师',
+    period: '2026.03 – 2026.07',
+    techStack: ['Vue3', 'Flask', 'SQLAlchemy', 'SQLite', 'Chart.js', 'Pinia'],
+    highlights: [
+      '负责前后端分离架构设计，完成8个核心业务模块（用户、商品、分类、库存、销售订单、采购订单、发票管理、数据看板）的开发与集成',
+      '使用Vue3递归组件实现多层级商品分类可视化，结合虚拟滚动优化大数据渲染',
+      '实现全局用户状态管理（单例模式+localStorage），6个页面用户信息一致展示，页面加载时间减少20%',
+      '集成Chart.js实现5种数据可视化图表联动更新，筛选响应<1秒',
+      '实现4种智能体角色（通用助手、库存专家、销售顾问、报表分析师），维护独立对话历史，支持无缝切换',
+      '为所有数据库操作添加事务管理与异常捕获，数据操作成功率99.9%'
+    ],
+    expanded: false
+  }
+];
+
+const Projects = () => {
+  const [projectList, setProjectList] = useState<Project[]>(projects);
+
+  const toggleExpand = (id: number) => {
+    setProjectList(prev => 
+      prev.map(project => 
+        project.id === id ? { ...project, expanded: !project.expanded } : project
+      )
+    );
+  };
+
+  return (
+    <section className="bg-white rounded-2xl p-6 card-shadow">
+      <div className="flex items-center gap-3 mb-6">
+        <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center">
+          <FolderOpen className="w-5 h-5 text-white" />
+        </div>
+        <div>
+          <h2 className="text-xl font-bold text-gray-800">项目经历</h2>
+          <p className="text-sm text-gray-500">3个项目，覆盖嵌入式与全栈开发</p>
+        </div>
+      </div>
+      
+      <div className="space-y-4">
+        {projectList.map((project) => {
+          const Icon = project.icon;
+          return (
+            <div 
+              key={project.id}
+              className="border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 hover:border-purple-300 hover:shadow-md"
+            >
+              <div 
+                className="p-5 bg-gray-50 cursor-pointer"
+                onClick={() => toggleExpand(project.id)}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center shrink-0">
+                    <Icon className="w-6 h-6 text-purple-600" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <h3 className="font-bold text-gray-800 truncate">{project.title}</h3>
+                      {project.expanded ? (
+                        <ChevronUp className="w-5 h-5 text-gray-400 shrink-0" />
+                      ) : (
+                        <ChevronDown className="w-5 h-5 text-gray-400 shrink-0" />
+                      )}
+                    </div>
+                    <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500">
+                      <span className="px-2 py-0.5 bg-purple-100 text-purple-700 rounded">{project.role}</span>
+                      <span>{project.period}</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {project.techStack.map((tech, index) => (
+                        <span key={index} className="tech-tag">{tech}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div 
+                className={`overflow-hidden transition-all duration-300 ${project.expanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
+              >
+                <div className="p-5 pt-0">
+                  <ul className="space-y-3">
+                    {project.highlights.map((highlight, index) => (
+                      <li key={index} className="flex items-start gap-3 text-gray-600 text-sm">
+                        <span className="w-6 h-6 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                          {index + 1}
+                        </span>
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+};
+
+export default Projects;
