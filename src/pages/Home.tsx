@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Header from '../components/Header';
 import Skills from '../components/Skills';
 import Education from '../components/Education';
@@ -5,13 +6,38 @@ import Experience from '../components/Experience';
 import Projects from '../components/Projects';
 import Awards from '../components/Awards';
 import SelfAssessment from '../components/SelfAssessment';
-import { Download, Printer } from 'lucide-react';
+import { Download, Printer, Loader2 } from 'lucide-react';
+import { generatePDF } from '../utils/pdfGenerator';
 
 const handlePrint = () => {
   window.print();
 };
 
+const handleDownloadPDF = async () => {
+  const resumeElement = document.getElementById('resume-content');
+  if (resumeElement) {
+    await generatePDF('resume-content', '郑鑫源-简历');
+  }
+};
+
 export default function Home() {
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [isPrintMode, setIsPrintMode] = useState(false);
+
+  const handleDownloadPDFWithLoading = async () => {
+    setIsGenerating(true);
+    setIsPrintMode(true);
+    
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    try {
+      await handleDownloadPDF();
+    } finally {
+      setIsGenerating(false);
+      setIsPrintMode(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="max-w-6xl mx-auto px-4 py-8">
@@ -28,10 +54,22 @@ export default function Home() {
               <Printer className="w-4 h-4" />
               <span className="text-sm font-medium">打印简历</span>
             </button>
+            <button 
+              onClick={handleDownloadPDFWithLoading}
+              disabled={isGenerating}
+              className="flex items-center gap-2 px-4 py-2 bg-[#1e3a5f] text-white rounded-lg hover:bg-[#2d4a6f] transition-colors duration-200 shadow-sm disabled:opacity-70 disabled:cursor-not-allowed"
+            >
+              {isGenerating ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                <Download className="w-4 h-4" />
+              )}
+              <span className="text-sm font-medium">下载PDF</span>
+            </button>
           </div>
         </div>
         
-        <div className="space-y-6">
+        <div id="resume-content" className="space-y-6">
           <Header />
           <Skills />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -39,7 +77,7 @@ export default function Home() {
             <Awards />
           </div>
           <Experience />
-          <Projects />
+          <Projects isPrintMode={isPrintMode} />
           <SelfAssessment />
         </div>
         

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FolderOpen, ChevronDown, ChevronUp, Cpu, Globe } from 'lucide-react';
 
 interface Project {
@@ -10,6 +10,10 @@ interface Project {
   techStack: string[];
   highlights: string[];
   expanded: boolean;
+}
+
+interface ProjectsProps {
+  isPrintMode?: boolean;
 }
 
 const projects: Project[] = [
@@ -62,15 +66,23 @@ const projects: Project[] = [
   }
 ];
 
-const Projects = () => {
+const Projects = ({ isPrintMode = false }: ProjectsProps) => {
   const [projectList, setProjectList] = useState<Project[]>(projects);
 
+  useEffect(() => {
+    if (isPrintMode) {
+      setProjectList(prev => prev.map(p => ({ ...p, expanded: true })));
+    }
+  }, [isPrintMode]);
+
   const toggleExpand = (id: number) => {
-    setProjectList(prev => 
-      prev.map(project => 
-        project.id === id ? { ...project, expanded: !project.expanded } : project
-      )
-    );
+    if (!isPrintMode) {
+      setProjectList(prev => 
+        prev.map(project => 
+          project.id === id ? { ...project, expanded: !project.expanded } : project
+        )
+      );
+    }
   };
 
   return (
@@ -88,6 +100,7 @@ const Projects = () => {
       <div className="space-y-4">
         {projectList.map((project) => {
           const Icon = project.icon;
+          const isExpanded = isPrintMode ? true : project.expanded;
           return (
             <div 
               key={project.id}
@@ -104,7 +117,7 @@ const Projects = () => {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
                       <h3 className="font-bold text-gray-800">{project.title}</h3>
-                      {project.expanded ? (
+                      {isExpanded ? (
                         <ChevronUp className="w-5 h-5 text-gray-400 shrink-0" />
                       ) : (
                         <ChevronDown className="w-5 h-5 text-gray-400 shrink-0" />
@@ -124,7 +137,7 @@ const Projects = () => {
               </div>
               
               <div 
-                className={`overflow-hidden transition-all duration-300 ${project.expanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
+                className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
               >
                 <div className="p-5 pt-0">
                   <ul className="space-y-3">
