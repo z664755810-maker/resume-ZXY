@@ -8,61 +8,67 @@ export const generatePDF = async (elementId: string, fileName: string = 'resume'
     return;
   }
 
-  const originalDisplay = element.style.display;
-  element.style.display = 'block';
+  const originalStyle = element.style.cssText;
+  element.style.position = 'relative';
+  element.style.zIndex = '1000';
+  element.style.background = '#ffffff';
 
-  try {
-    const canvas = await html2canvas(element, {
-      scale: 2,
-      useCORS: true,
-      allowTaint: true,
-      backgroundColor: '#ffffff',
-      logging: false,
-      scrollX: 0,
-      scrollY: 0,
-    });
+  const canvas = await html2canvas(element, {
+    scale: 2,
+    useCORS: true,
+    backgroundColor: '#ffffff',
+    logging: false,
+    allowTaint: true,
+  });
 
-    const imgData = canvas.toDataURL('image/png');
-    const pdf = new jsPDF({
-      orientation: 'portrait',
-      unit: 'mm',
-      format: 'a4',
-    });
+  element.style.cssText = originalStyle;
 
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = pdf.internal.pageSize.getHeight();
-    const imgWidth = canvas.width;
-    const imgHeight = canvas.height;
-    const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
-    const imgX = (pdfWidth - imgWidth * ratio) / 2;
-    const imgY = 0;
-    const imgFinalWidth = imgWidth * ratio;
-    const imgFinalHeight = imgHeight * ratio;
+  const imgData = canvas.toDataURL('image/png');
+  
+  const pdf = new jsPDF({
+    orientation: 'portrait',
+    unit: 'mm',
+    format: 'a4',
+  });
 
-    let currentY = 0;
-    const pageHeight = pdfHeight;
+  const pdfWidth = pdf.internal.pageSize.getWidth();
+  const pdfHeight = pdf.internal.pageSize.getHeight();
+  
+  const imgWidth = canvas.width;
+  const imgHeight = canvas.height;
+  
+  const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+  const imgX = (pdfWidth - imgWidth * ratio) / 2;
+  const imgY = 0;
+  const imgFinalWidth = imgWidth * ratio;
+  const imgFinalHeight = imgHeight * ratio;
 
-    if (imgFinalHeight <= pageHeight) {
-      pdf.addImage(imgData, 'PNG', imgX, imgY, imgFinalWidth, imgFinalHeight);
-    } else {
-      const numPages = Math.ceil(imgFinalHeight / pageHeight);
-      for (let i = 0; i < numPages; i++) {
-        if (i > 0) {
-          pdf.addPage();
-        }
-        const yOffset = -pageHeight * i;
-        pdf.addImage(imgData, 'PNG', imgX, yOffset, imgFinalWidth, imgFinalHeight);
-        currentY = pageHeight * (i + 1);
+  if (imgFinalHeight <= pdfHeight) {
+    pdf.addImage(imgData, 'PNG', imgX, imgY, imgFinalWidth, imgFinalHeight);
+  } else {
+    const pages = Math.ceil(imgFinalHeight / pdfHeight);
+    
+    for (let i = 0; i < pages; i++) {
+      if (i > 0) {
+        pdf.addPage();
+      }
+      
+      const yOffset = i * pdfHeight;
+      const sourceY = (i / pages) * imgHeight;
+      const sourceHeight = imgHeight / pages;
+      
+      const tempCanvas = document.createElement('canvas');
+      tempCanvas.width = imgWidth;
+      tempCanvas.height = sourceHeight;
+      const ctx = tempCanvas.getContext('2d');
+      
+      if (ctx) {
+        ctx.drawImage(canvas, 0, sourceY, imgWidth, sourceHeight, 0, 0, imgWidth, sourceHeight);
+        const tempImgData = tempCanvas.toDataURL('image/png');
+        pdf.addImage(tempImgData, 'PNG', imgX, imgY, imgFinalWidth, pdfHeight);
       }
     }
-
-    pdf.save(`${fileName}.pdf`);
-  } catch (error) {
-    console.error('Error generating PDF:', error);
-    alert('生成PDF失败，请重试');
-  } finally {
-    element.style.display = originalDisplay;
   }
-};
 
-export default generatePDF;
+  pdf.save(`${fileName}.pdf`);
+};

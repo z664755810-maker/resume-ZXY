@@ -11,7 +11,10 @@
     "check": "tsc -b --noEmit"
   },
   "dependencies": {
+    "caniuse-lite": "^1.0.30001800",
     "clsx": "^2.1.1",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "lucide-react": "^0.511.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
