@@ -124,7 +124,7 @@ const Projects = ({ isPrintMode = false }: ProjectsProps) => {
                       )}
                     </div>
                     <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500">
-                      <span className="inline-flex items-center px-2.5 py-1 bg-purple-100 text-purple-700 rounded-md">{project.role}</span>
+                      <span className="inline-flex items-center px-2.5 py-1 bg-purple-100 text-purple-700 rounded-md leading-none">{project.role}</span>
                       <span>{project.period}</span>
                     </div>
                     <div className="flex flex-wrap gap-2 mt-2">
@@ -143,7 +143,7 @@ const Projects = ({ isPrintMode = false }: ProjectsProps) => {
                   <ul className="space-y-3">
                     {project.highlights.map((highlight, index) => (
                       <li key={index} className="flex items-start gap-3 text-gray-600 text-sm line-height-optimal">
-                        <span className="w-6 h-6 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                        <span className="w-[1.4em] h-[1.4em] bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-[0.7em] font-bold shrink-0 leading-none">
                           {index + 1}
                         </span>
                         {highlight}
