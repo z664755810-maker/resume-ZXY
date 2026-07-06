@@ -120,10 +120,9 @@ body {
 @media print {
   @page {
     size: A4 portrait;
-    margin: 0;
+    margin: 8mm;
   }
 
-  /* 全局：保留所有颜色，禁止被打印样式漂白 */
   *, *::before, *::after {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
@@ -138,9 +137,10 @@ body {
     font-family: 'Noto Sans SC', 'SimHei', 'Microsoft YaHei', sans-serif;
     color: #1a1a1a;
     -webkit-font-smoothing: antialiased;
+    font-size: 15px;
+    line-height: 1.65;
   }
 
-  /* 隐藏所有不需要打印的元素 */
   .no-print,
   button,
   footer,
@@ -148,44 +148,48 @@ body {
     display: none !important;
   }
 
-  /* 移除页面渐变背景 */
   .min-h-screen,
   .bg-gradient-to-br,
   .bg-slate-50,
   .bg-blue-50 {
     background: #ffffff !important;
     min-height: auto !important;
+    height: auto !important;
   }
 
-  /* 主容器：恢复正常文档流，无圆角无阴影 */
   #resume-content {
     max-width: 100% !important;
     margin: 0 !important;
-    padding: 12mm 15mm !important;
+    padding: 0 !important;
     background: #ffffff !important;
+    width: 100% !important;
   }
 
-  /* 所有 section 卡片：保留圆角和彩色背景 */
+  .space-y-6 > * + * {
+    margin-top: 20px !important;
+  }
+
+  .gap-6 {
+    gap: 20px !important;
+  }
+
   section,
   #resume-content > div {
     background: #ffffff !important;
     page-break-inside: avoid;
     break-inside: avoid;
-    margin-bottom: 10px !important;
+    margin-bottom: 0 !important;
   }
 
-  /* Header 卡片：保持深蓝背景 */
   #resume-content > div:first-child {
     background: #1e3a5f !important;
     color: #ffffff !important;
     border-radius: 16px !important;
     padding: 24px !important;
-    margin-bottom: 20px !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
 
-  /* Header 内的白色文字保留白色 */
   #resume-content > div:first-child * {
     color: inherit !important;
   }
@@ -196,18 +200,19 @@ body {
     color: #ffffff !important;
   }
 
-  /* 圆角全部保留 */
-  .rounded-2xl,
-  .rounded-xl,
-  .rounded-lg,
-  .rounded-full {
+  .rounded-2xl {
     border-radius: 16px !important;
+  }
+  .rounded-xl {
+    border-radius: 12px !important;
+  }
+  .rounded-lg {
+    border-radius: 8px !important;
   }
   .rounded-full {
     border-radius: 9999px !important;
   }
 
-  /* 所有彩色背景卡片强制保留（用 !important 覆盖任何冲突） */
   .bg-blue-50,
   .bg-green-50,
   .bg-purple-50,
@@ -232,48 +237,42 @@ body {
     print-color-adjust: exact !important;
   }
 
-  /* 渐变背景：保持原色 */
   .bg-gradient-to-br,
   [class*="bg-gradient"] {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
 
-  /* 隐藏的项目展开按钮（PDF 中应全部展开）*/
   .chevron-icon,
   [class*="Chevron"] {
     display: none !important;
   }
 
-  /* 表格/列表避免被切断 */
   ul, ol, li, p, h1, h2, h3, h4 {
     page-break-inside: avoid;
     break-inside: avoid;
   }
 
-  /* 字号适配打印（缩小约10%）*/
-  .text-3xl { font-size: 24pt !important; }
-  .text-2xl { font-size: 18pt !important; }
-  .text-xl  { font-size: 14pt !important; }
-  .text-lg  { font-size: 13pt !important; }
-  .text-base { font-size: 11pt !important; }
-  .text-sm  { font-size: 10pt !important; }
-  .text-xs  { font-size: 9pt  !important; }
-  h1 { font-size: 24pt !important; font-weight: 700 !important; }
-  h2 { font-size: 14pt !important; font-weight: 700 !important; }
-  h3 { font-size: 12pt !important; font-weight: 600 !important; }
+  .text-3xl { font-size: 28px !important; }
+  .text-2xl { font-size: 22px !important; }
+  .text-xl  { font-size: 18px !important; }
+  .text-lg  { font-size: 16px !important; }
+  .text-base { font-size: 15px !important; }
+  .text-sm  { font-size: 14px !important; }
+  .text-xs  { font-size: 12px !important; }
 
-  /* 行高优化 */
+  h1 { font-size: 28px !important; font-weight: 700 !important; }
+  h2 { font-size: 18px !important; font-weight: 700 !important; }
+  h3 { font-size: 16px !important; font-weight: 600 !important; }
+
   p, li, span {
-    line-height: 1.7 !important;
+    line-height: 1.65 !important;
   }
 
-  /* 项目卡片保留边框 */
   .border {
     border: 1px solid #e5e7eb !important;
   }
 
-  /* 图片清晰打印 */
   img {
     display: block !important;
     max-width: 100% !important;
@@ -282,4 +281,43 @@ body {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
+
+  .p-6 { padding: 24px !important; }
+  .p-5 { padding: 20px !important; }
+  .p-4 { padding: 16px !important; }
+  .p-3 { padding: 12px !important; }
+  .p-2 { padding: 8px !important; }
+
+  .mb-6 { margin-bottom: 20px !important; }
+  .mb-5 { margin-bottom: 16px !important; }
+  .mb-4 { margin-bottom: 16px !important; }
+  .mb-3 { margin-bottom: 12px !important; }
+  .mb-2 { margin-bottom: 8px !important; }
+
+  .mt-6 { margin-top: 20px !important; }
+  .mt-4 { margin-top: 16px !important; }
+  .mt-2 { margin-top: 8px !important; }
+
+  .pt-6 { padding-top: 20px !important; }
+  .pb-4 { padding-bottom: 16px !important; }
+
+  .gap-6 { gap: 20px !important; }
+  .gap-5 { gap: 16px !important; }
+  .gap-4 { gap: 16px !important; }
+  .gap-3 { gap: 12px !important; }
+  .gap-2 { gap: 8px !important; }
+  .gap-2\.5 { gap: 10px !important; }
+  .gap-x-6 { gap-x: 20px !important; }
+  .gap-y-2 { gap-y: 8px !important; }
+  .gap-y-2\.5 { gap-y: 10px !important; }
+
+  .space-y-6 { margin-bottom: 0 !important; }
+  .space-y-4 { margin-bottom: 0 !important; }
+  .space-y-3 { margin-bottom: 0 !important; }
+  .space-y-2 { margin-bottom: 0 !important; }
+
+  .space-y-6 > * + * { margin-top: 20px !important; }
+  .space-y-4 > * + * { margin-top: 16px !important; }
+  .space-y-3 > * + * { margin-top: 12px !important; }
+  .space-y-2 > * + * { margin-top: 8px !important; }
 }
