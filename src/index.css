@@ -115,16 +115,14 @@ body {
 
 /* ===========================================
    打印样式：使用浏览器原生打印（window.print）
-   核心原则：不覆盖 Tailwind 间距值，让网页端
-   的 space-y/p/gap/mb 等自然生效，保证 1:1
+   核心原则：压缩所有间距，使PDF布局紧凑
    =========================================== */
 @media print {
   @page {
     size: A4 portrait;
-    margin: 6mm;
+    margin: 5mm;
   }
 
-  /* 全局：保留所有颜色（背景色/文字色/边框色） */
   *, *::before, *::after {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
@@ -138,9 +136,10 @@ body {
     padding: 0 !important;
     font-family: 'Noto Sans SC', 'SimHei', 'Microsoft YaHei', sans-serif;
     -webkit-font-smoothing: antialiased;
+    font-size: 13px !important;
+    line-height: 1.4 !important;
   }
 
-  /* 隐藏不需要打印的元素 */
   .no-print,
   button,
   footer,
@@ -148,7 +147,6 @@ body {
     display: none !important;
   }
 
-  /* 移除页面级渐变背景，改为纯白 */
   .min-h-screen,
   .bg-gradient-to-br.from-slate-50,
   .bg-gradient-to-br.to-blue-50 {
@@ -157,7 +155,6 @@ body {
     height: auto !important;
   }
 
-  /* 主容器：去除外层 padding，让内容充分利用页面宽度 */
   .max-w-6xl {
     max-width: 100% !important;
     margin: 0 !important;
@@ -171,18 +168,61 @@ body {
     width: 100% !important;
   }
 
-  /* 各 section 卡片：防止跨页断裂 */
+  /* 压缩模块间距 */
+  .space-y-6 > * + * { margin-top: 8px !important; }
+  .space-y-4 > * + * { margin-top: 6px !important; }
+  .space-y-3 > * + * { margin-top: 4px !important; }
+  .space-y-2 > * + * { margin-top: 3px !important; }
+
+  /* 压缩卡片内部padding */
+  .p-6 { padding: 12px !important; }
+  .p-5 { padding: 10px !important; }
+  .p-4 { padding: 8px !important; }
+
+  /* 压缩外边距 */
+  .mb-6 { margin-bottom: 8px !important; }
+  .mb-5 { margin-bottom: 6px !important; }
+  .mb-4 { margin-bottom: 6px !important; }
+  .mb-3 { margin-bottom: 4px !important; }
+  .mb-2 { margin-bottom: 3px !important; }
+
+  /* 压缩列间距 */
+  .gap-6 { gap: 8px !important; }
+  .gap-5 { gap: 6px !important; }
+  .gap-4 { gap: 6px !important; }
+  .gap-3 { gap: 4px !important; }
+  .gap-2 { gap: 3px !important; }
+  .gap-x-6 { gap-x: 8px !important; }
+  .gap-x-5 { gap-x: 6px !important; }
+  .gap-y-2\.5 { gap-y: 4px !important; }
+  .gap-y-2 { gap-y: 3px !important; }
+
+  /* 压缩其他padding/margin */
+  .pt-6 { padding-top: 8px !important; }
+  .pt-4 { padding-top: 6px !important; }
+  .pt-3 { padding-top: 4px !important; }
+  .pb-4 { padding-bottom: 6px !important; }
+  .pl-16 { padding-left: 48px !important; }
+  .mt-6 { margin-top: 8px !important; }
+  .mt-4 { margin-top: 6px !important; }
+  .mt-2 { margin-top: 3px !important; }
+  .mt-1\.5 { margin-top: 4px !important; }
+
+  /* 压缩标题下方间距 */
+  .section-title { margin-bottom: 8px !important; }
+
   section {
     page-break-inside: avoid;
     break-inside: avoid;
+    margin-bottom: 0 !important;
   }
 
-  /* Header 卡片：保持深蓝背景和白色文字 */
   #resume-content > div:first-child {
     background: #1e3a5f !important;
     color: #ffffff !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+    padding: 12px !important;
   }
   #resume-content > div:first-child .text-white,
   #resume-content > div:first-child .text-white\/90,
@@ -191,7 +231,6 @@ body {
     color: #ffffff !important;
   }
 
-  /* 所有彩色背景卡片：强制保留颜色 */
   .bg-blue-50, .bg-green-50, .bg-purple-50, .bg-yellow-50,
   .bg-indigo-50, .bg-orange-50,
   .bg-blue-100, .bg-green-100, .bg-purple-100, .bg-yellow-100,
@@ -204,22 +243,34 @@ body {
     print-color-adjust: exact !important;
   }
 
-  /* 隐藏折叠按钮（PDF 中项目全部展开） */
   .chevron-icon,
   [class*="Chevron"] {
     display: none !important;
   }
 
-  /* 防止标题/段落被切断到两页 */
   h1, h2, h3, h4, p, li {
     page-break-inside: avoid;
     break-inside: avoid;
   }
 
-  /* 图片清晰打印 */
   img {
     page-break-inside: avoid;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
+
+  /* 压缩Header内部间距 */
+  #resume-content > div:first-child .gap-6 { gap: 10px !important; }
+  #resume-content > div:first-child .gap-2 { gap: 3px !important; }
+  #resume-content > div:first-child .mb-3 { margin-bottom: 4px !important; }
+  #resume-content > div:first-child .mb-4 { margin-bottom: 6px !important; }
+
+  /* 压缩标题字号 */
+  .text-3xl { font-size: 22px !important; }
+  .text-2xl { font-size: 18px !important; }
+  .text-xl { font-size: 15px !important; }
+  .text-lg { font-size: 14px !important; }
+  .text-base { font-size: 13px !important; }
+  .text-sm { font-size: 12px !important; }
+  .text-xs { font-size: 11px !important; }
 }
