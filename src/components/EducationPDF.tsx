@@ -22,8 +22,8 @@ const EducationPDF = () => {
               <div>
                 <h3 className="font-bold text-gray-800 text-base mb-1">天津理工大学中环信息学院</h3>
                 <div className="flex flex-wrap gap-2">
-                  <span className="inline-flex items-center justify-center px-2.5 py-1 bg-blue-100 text-blue-700 rounded-md text-sm font-medium h-6" style={{ lineHeight: '1 !important' }}>计算机科学与技术</span>
-                  <span className="inline-flex items-center justify-center px-2.5 py-1 bg-gray-100 text-gray-600 rounded-md text-sm font-medium h-6" style={{ lineHeight: '1 !important' }}>本科（大三在读）</span>
+                  <span className="inline-block px-2.5 py-1 bg-blue-100 text-blue-700 rounded-md text-sm font-medium h-6 leading-[1.5rem] text-center">计算机科学与技术</span>
+                  <span className="inline-block px-2.5 py-1 bg-gray-100 text-gray-600 rounded-md text-sm font-medium h-6 leading-[1.5rem] text-center">本科（大三在读）</span>
                 </div>
               </div>
               <div className="flex items-center gap-1.5 text-gray-500">
@@ -37,12 +37,12 @@ const EducationPDF = () => {
                 <span className="text-sm font-semibold text-gray-700">主修课程：</span>
               </div>
               <div className="flex flex-wrap gap-2">
-                <span className="inline-flex items-center justify-center px-2.5 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium h-5" style={{ lineHeight: '1 !important' }}>数据结构</span>
-                <span className="inline-flex items-center justify-center px-2.5 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium h-5" style={{ lineHeight: '1 !important' }}>计算机网络</span>
-                <span className="inline-flex items-center justify-center px-2.5 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium h-5" style={{ lineHeight: '1 !important' }}>操作系统</span>
-                <span className="inline-flex items-center justify-center px-2.5 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium h-5" style={{ lineHeight: '1 !important' }}>数据库原理</span>
-                <span className="inline-flex items-center justify-center px-2.5 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium h-5" style={{ lineHeight: '1 !important' }}>嵌入式系统</span>
-                <span className="inline-flex items-center justify-center px-2.5 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium h-5" style={{ lineHeight: '1 !important' }}>C/C++程序设计</span>
+                <span className="inline-block px-2.5 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium h-5 leading-[1.25rem] text-center">数据结构</span>
+                <span className="inline-block px-2.5 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium h-5 leading-[1.25rem] text-center">计算机网络</span>
+                <span className="inline-block px-2.5 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium h-5 leading-[1.25rem] text-center">操作系统</span>
+                <span className="inline-block px-2.5 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium h-5 leading-[1.25rem] text-center">数据库原理</span>
+                <span className="inline-block px-2.5 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium h-5 leading-[1.25rem] text-center">嵌入式系统</span>
+                <span className="inline-block px-2.5 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium h-5 leading-[1.25rem] text-center">C/C++程序设计</span>
               </div>
             </div>
           </div>

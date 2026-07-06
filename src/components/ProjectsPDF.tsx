@@ -73,12 +73,12 @@ const ProjectsPDF = () => {
                   <div className="flex-1 min-w-0">
                     <h3 className="font-bold text-gray-800 text-base mb-1.5">{project.title}</h3>
                     <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500">
-                      <span className="inline-flex items-center justify-center px-2.5 py-1 bg-purple-100 text-purple-700 rounded-md text-sm font-medium h-6" style={{ lineHeight: '1 !important' }}>{project.role}</span>
+                      <span className="inline-block px-2.5 py-1 bg-purple-100 text-purple-700 rounded-md text-sm font-medium h-6 leading-[1.5rem] text-center">{project.role}</span>
                       <span>{project.period}</span>
                     </div>
                     <div className="flex flex-wrap gap-2 mt-2">
                       {project.techStack.map((tech, index) => (
-                        <span key={index} className="inline-flex items-center justify-center px-2.5 py-1 text-xs font-medium rounded-md bg-slate-100 text-slate-600 h-5" style={{ lineHeight: '1 !important' }}>{tech}</span>
+                        <span key={index} className="inline-block px-2.5 py-1 text-xs font-medium rounded-md bg-slate-100 text-slate-600 h-5 leading-[1.25rem] text-center">{tech}</span>
                       ))}
                     </div>
                   </div>

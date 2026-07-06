@@ -49,9 +49,9 @@ const ExperiencePDF = () => {
           <h2 className="text-xl font-bold text-gray-800">实习经历</h2>
           <p className="text-sm text-gray-500">天津市赛鸣科技有限公司</p>
         </div>
-        <div className="ml-auto inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-md bg-green-100 text-green-700 h-5" style={{ lineHeight: '1 !important' }}>
+        <div className="ml-auto flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-md bg-green-100 text-green-700 h-5">
           <Award className="w-3 h-3" />
-          <span>优秀实习生</span>
+          <span className="leading-[1.25rem]">优秀实习生</span>
         </div>
       </div>
       

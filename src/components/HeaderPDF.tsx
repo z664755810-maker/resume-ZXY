@@ -22,9 +22,9 @@ const HeaderPDF = () => {
         <div className="flex-1 text-center md:text-left">
           <h1 className="text-3xl font-bold mb-3">郑鑫源</h1>
           <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-4">
-            <span className="inline-flex items-center justify-center px-3 py-1.5 bg-[#3a5a80] rounded-full text-sm font-medium h-7" style={{ lineHeight: '1 !important' }}>嵌入式软件开发</span>
-            <span className="inline-flex items-center justify-center px-3 py-1.5 bg-[#3a5a80] rounded-full text-sm font-medium h-7" style={{ lineHeight: '1 !important' }}>物联网开发</span>
-            <span className="inline-flex items-center justify-center px-3 py-1.5 bg-[#3a5a80] rounded-full text-sm font-medium h-7" style={{ lineHeight: '1 !important' }}>后端 / 全栈开发</span>
+            <span className="inline-block px-3 py-1.5 bg-[#3a5a80] rounded-full text-sm font-medium h-7 leading-[1.75rem] text-center">嵌入式软件开发</span>
+            <span className="inline-block px-3 py-1.5 bg-[#3a5a80] rounded-full text-sm font-medium h-7 leading-[1.75rem] text-center">物联网开发</span>
+            <span className="inline-block px-3 py-1.5 bg-[#3a5a80] rounded-full text-sm font-medium h-7 leading-[1.75rem] text-center">后端 / 全栈开发</span>
           </div>
           
           <div className="grid grid-cols-2 gap-x-6 gap-y-2.5 text-sm">

@@ -30,7 +30,7 @@ const SelfAssessmentPDF = () => {
                 {strengths.map((strength, index) => (
                   <span 
                     key={index}
-                    className="inline-flex items-center justify-center px-3 py-1.5 bg-white text-indigo-700 border border-indigo-200 rounded-full text-sm font-medium h-6" style={{ lineHeight: '1 !important' }}>
+                    className="inline-block px-3 py-1.5 bg-white text-indigo-700 border border-indigo-200 rounded-full text-sm font-medium h-6 leading-[1.5rem] text-center">
                     {strength}
                   </span>
                 ))}
