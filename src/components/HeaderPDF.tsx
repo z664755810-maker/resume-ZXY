@@ -13,10 +13,10 @@ const HeaderPDF = () => {
               style={{ objectPosition: 'center 35%' }}
             />
           </div>
-          <div className="absolute -bottom-2 -right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full flex items-center gap-1">
-            <span className="w-1.5 h-1.5 bg-white rounded-full"></span>
-            大三在读
-          </div>
+          <div className="absolute -bottom-2 -right-2 bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full flex items-center gap-1 h-6">
+          <span className="w-1.5 h-1.5 bg-white rounded-full"></span>
+          <span className="leading-[1.5rem]">大三在读</span>
+        </div>
         </div>
         
         <div className="flex-1 text-center md:text-left">
