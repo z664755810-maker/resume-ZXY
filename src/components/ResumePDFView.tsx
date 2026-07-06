@@ -1,23 +1,23 @@
-import HeaderPDF from './HeaderPDF';
-import SkillsPDF from './SkillsPDF';
-import EducationPDF from './EducationPDF';
-import ExperiencePDF from './ExperiencePDF';
-import ProjectsPDF from './ProjectsPDF';
-import AwardsPDF from './AwardsPDF';
-import SelfAssessmentPDF from './SelfAssessmentPDF';
+import Header from './Header';
+import Skills from './Skills';
+import Education from './Education';
+import Experience from './Experience';
+import Projects from './Projects';
+import Awards from './Awards';
+import SelfAssessment from './SelfAssessment';
 
 const ResumePDFView = () => {
   return (
     <div id="pdf-resume-content" className="bg-white">
-      <HeaderPDF />
-      <SkillsPDF />
+      <Header />
+      <Skills />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <EducationPDF />
-        <AwardsPDF />
+        <Education />
+        <Awards />
       </div>
-      <ExperiencePDF />
-      <ProjectsPDF />
-      <SelfAssessmentPDF />
+      <Experience />
+      <Projects isPrintMode={true} />
+      <SelfAssessment />
     </div>
   );
 };
