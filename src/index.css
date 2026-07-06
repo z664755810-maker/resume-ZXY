@@ -8,43 +8,43 @@
   font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.65;
   font-weight: 400;
-  
+
   --color-primary: #1e3a5f;
   --color-primary-light: #2d4a6f;
   --color-primary-dark: #0f2744;
   --color-accent: #007bff;
   --color-accent-light: #3395ff;
-  
+
   --color-text-primary: #1a1a1a;
   --color-text-secondary: #4a5568;
   --color-text-muted: #718096;
   --color-text-light: #a0aec0;
-  
+
   --color-bg-page: #f1f5f9;
   --color-bg-card: #ffffff;
   --color-bg-hover: #f8fafc;
-  
+
   --color-border: #e2e8f0;
   --color-border-light: #f1f5f9;
   --color-border-focus: #cbd5e0;
-  
+
   --radius-sm: 6px;
   --radius-md: 8px;
   --radius-lg: 12px;
   --radius-xl: 16px;
   --radius-full: 9999px;
-  
+
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.12);
-  
+
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
   --spacing-lg: 24px;
   --spacing-xl: 32px;
-  
+
   --font-size-xs: 12px;
   --font-size-sm: 14px;
   --font-size-base: 15px;
@@ -67,402 +67,219 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
+
   .card-shadow {
     box-shadow: var(--shadow-md);
   }
-  
+
   .card-shadow-hover {
     box-shadow: var(--shadow-lg);
   }
-  
+
   .skill-tag {
     @apply inline-flex items-center justify-center px-3 py-1 text-sm font-medium rounded-full bg-blue-50 text-blue-700 border border-blue-100 leading-none h-6;
     line-height: 1 !important;
   }
-  
+
   .tech-tag {
     @apply inline-flex items-center justify-center px-2.5 py-1 text-xs font-medium rounded-md bg-slate-100 text-slate-600 leading-none h-5;
     line-height: 1 !important;
   }
-  
+
   .achievement-badge {
     @apply inline-flex items-center justify-center px-2.5 py-1 text-xs font-semibold rounded-md bg-green-100 text-green-700 leading-none h-5;
     line-height: 1 !important;
   }
-  
+
   .tag-item {
     @apply inline-flex items-center justify-center px-3 py-1 text-sm font-medium rounded-full leading-none h-6;
     line-height: 1 !important;
   }
-  
+
   .section-title {
     @apply flex items-center gap-3 mb-6;
   }
-  
+
   .icon-box {
     @apply w-10 h-10 rounded-xl flex items-center justify-center;
   }
-  
+
   .content-card {
     @apply bg-white rounded-xl p-5 border border-gray-100;
   }
-  
+
   .line-height-optimal {
     line-height: 1.7;
   }
 }
 
+/* ===========================================
+   打印样式：使用浏览器原生打印（window.print）
+   保证 PDF 与网页端视觉完全一致
+   =========================================== */
 @media print {
   @page {
     size: A4 portrait;
-    margin: 12mm 15mm;
-    
-    @top-left { content: ""; }
-    @top-right { content: ""; }
-    @bottom-left { content: ""; }
-    @bottom-right { content: ""; }
+    margin: 0;
   }
 
+  /* 全局：保留所有颜色，禁止被打印样式漂白 */
   *, *::before, *::after {
-    -webkit-print-color-adjust: none;
-    print-color-adjust: none;
-    color-adjust: none;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
     box-shadow: none !important;
   }
 
   html, body {
-    background: white !important;
+    background: #ffffff !important;
     margin: 0 !important;
     padding: 0 !important;
-    font-size: 11pt;
-    line-height: 1.7;
     font-family: 'Noto Sans SC', 'SimHei', 'Microsoft YaHei', sans-serif;
     color: #1a1a1a;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
-  body {
-    max-width: 100% !important;
-  }
-
-  #root, .min-h-screen, .bg-gradient-to-br, .bg-slate-50, .bg-blue-50 {
-    min-height: auto !important;
-    height: auto !important;
-    background: white !important;
-  }
-
+  /* 隐藏所有不需要打印的元素 */
   .no-print,
-  .trae-solo-badge-container,
-  [data-trae-solo-badge],
-  .trae-solo-badge,
-  .trae-solo-badge *,
-  div[class*="trae"],
-  div[class*="badge"] {
+  button,
+  footer,
+  #pdf-viewport {
     display: none !important;
-    visibility: hidden !important;
   }
 
-  .card-shadow {
-    box-shadow: none;
-    border: 1px solid #eee;
+  /* 移除页面渐变背景 */
+  .min-h-screen,
+  .bg-gradient-to-br,
+  .bg-slate-50,
+  .bg-blue-50 {
+    background: #ffffff !important;
+    min-height: auto !important;
   }
 
-  .bg-gradient-to-br {
-    background: white !important;
-    border-bottom: 2px solid #1e3a5f;
-    padding-bottom: 8px;
+  /* 主容器：恢复正常文档流，无圆角无阴影 */
+  #resume-content {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 12mm 15mm !important;
+    background: #ffffff !important;
   }
 
-  .text-white, .text-white\/90, .text-white\/70 {
-    color: #1a1a1a !important;
+  /* 所有 section 卡片：保留圆角和彩色背景 */
+  section,
+  #resume-content > div {
+    background: #ffffff !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 10px !important;
   }
 
-  .bg-white\/20 {
-    background: transparent !important;
-    border: 1px solid #1e3a5f;
+  /* Header 卡片：保持深蓝背景 */
+  #resume-content > div:first-child {
+    background: #1e3a5f !important;
+    color: #ffffff !important;
+    border-radius: 16px !important;
+    padding: 24px !important;
+    margin-bottom: 20px !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
+  /* Header 内的白色文字保留白色 */
+  #resume-content > div:first-child * {
+    color: inherit !important;
+  }
+  #resume-content > div:first-child .text-white,
+  #resume-content > div:first-child .text-white\/90,
+  #resume-content > div:first-child .text-white\/80,
+  #resume-content > div:first-child .text-white\/70 {
+    color: #ffffff !important;
+  }
+
+  /* 圆角全部保留 */
+  .rounded-2xl,
+  .rounded-xl,
+  .rounded-lg,
+  .rounded-full {
+    border-radius: 16px !important;
+  }
+  .rounded-full {
+    border-radius: 9999px !important;
+  }
+
+  /* 所有彩色背景卡片强制保留（用 !important 覆盖任何冲突） */
+  .bg-blue-50,
+  .bg-green-50,
+  .bg-purple-50,
+  .bg-yellow-50,
+  .bg-indigo-50,
+  .bg-orange-50,
+  .bg-blue-100,
+  .bg-green-100,
+  .bg-purple-100,
+  .bg-yellow-100,
+  .bg-orange-100,
+  .bg-indigo-100,
+  .bg-yellow-200,
+  .bg-green-200,
+  .bg-blue-200,
+  .bg-orange-200,
+  .bg-slate-100,
+  .bg-gray-50,
+  .bg-gray-100,
+  .bg-gray-200 {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* 渐变背景：保持原色 */
+  .bg-gradient-to-br,
+  [class*="bg-gradient"] {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* 隐藏的项目展开按钮（PDF 中应全部展开）*/
+  .chevron-icon,
+  [class*="Chevron"] {
+    display: none !important;
+  }
+
+  /* 表格/列表避免被切断 */
+  ul, ol, li, p, h1, h2, h3, h4 {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* 字号适配打印（缩小约10%）*/
+  .text-3xl { font-size: 24pt !important; }
+  .text-2xl { font-size: 18pt !important; }
+  .text-xl  { font-size: 14pt !important; }
+  .text-lg  { font-size: 13pt !important; }
+  .text-base { font-size: 11pt !important; }
+  .text-sm  { font-size: 10pt !important; }
+  .text-xs  { font-size: 9pt  !important; }
+  h1 { font-size: 24pt !important; font-weight: 700 !important; }
+  h2 { font-size: 14pt !important; font-weight: 700 !important; }
+  h3 { font-size: 12pt !important; font-weight: 600 !important; }
+
+  /* 行高优化 */
+  p, li, span {
+    line-height: 1.7 !important;
+  }
+
+  /* 项目卡片保留边框 */
+  .border {
+    border: 1px solid #e5e7eb !important;
+  }
+
+  /* 图片清晰打印 */
   img {
     display: block !important;
     max-width: 100% !important;
     height: auto !important;
     page-break-inside: avoid;
-    border: 1px solid #ccc;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
-
-  .rounded-2xl, .rounded-xl, .rounded-lg, .rounded-full {
-    border-radius: 0;
-  }
-
-  .p-6 { padding: 8px 0; }
-  .p-5 { padding: 6px 0; }
-  .p-4 { padding: 4px 0; }
-  .p-3 { padding: 3px 0; }
-  .p-2 { padding: 2px 0; }
-
-  .space-y-6 { margin-bottom: 10px; }
-  .space-y-4 { margin-bottom: 6px; }
-  .space-y-3 { margin-bottom: 5px; }
-  .space-y-2 { margin-bottom: 4px; }
-  .space-y-2\.5 { margin-bottom: 4px; }
-
-  .gap-6 { gap: 10px; }
-  .gap-4 { gap: 8px; }
-  .gap-3 { gap: 6px; }
-  .gap-2 { gap: 4px; }
-
-  .mb-6 { margin-bottom: 10px; }
-  .mb-4 { margin-bottom: 6px; }
-  .mb-3 { margin-bottom: 5px; }
-  .mb-2 { margin-bottom: 4px; }
-
-  .mt-6 { margin-top: 10px; }
-  .mt-4 { margin-top: 6px; }
-  .mt-2 { margin-top: 4px; }
-
-  .pt-6 { padding-top: 8px; }
-  .pb-4 { padding-bottom: 6px; }
-
-  .text-xl { font-size: 13pt; }
-  .text-lg { font-size: 12pt; }
-  .text-base { font-size: 11pt; }
-  .text-sm { font-size: 10pt; }
-  .text-xs { font-size: 9pt; }
-  .text-2xl { font-size: 16pt; }
-  .text-3xl { font-size: 20pt; }
-
-  h1 { 
-    font-size: 20pt; 
-    margin-bottom: 6px; 
-    font-weight: 700; 
-    color: #1e3a5f;
-    border-bottom: 2px solid #1e3a5f;
-    padding-bottom: 4px;
-    letter-spacing: 2px;
-  }
-
-  h2 { 
-    font-size: 13pt; 
-    margin-bottom: 6px; 
-    font-weight: 600; 
-    color: #1e3a5f;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 3px;
-    margin-top: 12px;
-    letter-spacing: 1px;
-  }
-
-  h3 { 
-    font-size: 11pt; 
-    margin-bottom: 4px; 
-    font-weight: 600; 
-    color: #333;
-  }
-
-  h4 { 
-    font-size: 10pt; 
-    margin-bottom: 3px; 
-    font-weight: 600; 
-    color: #444;
-  }
-
-  section {
-    page-break-inside: avoid;
-    margin-bottom: 10px;
-  }
-
-  div {
-    page-break-inside: avoid;
-  }
-
-  ul {
-    padding-left: 18px;
-    margin: 4px 0 6px 0;
-    list-style-type: disc;
-  }
-
-  li {
-    margin-bottom: 3px;
-    line-height: 1.6;
-  }
-
-  .tech-tag {
-    font-size: 9pt;
-    padding: 2px 5px;
-    margin: 0 3px 3px 0;
-    background: transparent !important;
-    border: 1px solid #ccc;
-    color: #444;
-    border-radius: 2px;
-  }
-
-  .skill-tag {
-    font-size: 9pt;
-    padding: 2px 6px;
-    margin: 0 3px 3px 0;
-    background: transparent !important;
-    border: 1px solid #ccc;
-    color: #444;
-    border-radius: 2px;
-  }
-
-  .achievement-badge {
-    font-size: 8.5pt;
-    padding: 2px 5px;
-    background: transparent !important;
-    border: 1px solid #ccc;
-    color: #444;
-    border-radius: 2px;
-  }
-
-  .w-32 { width: 75px; }
-  .h-32 { height: 75px; }
-  .w-12 { width: 36px; }
-  .h-12 { height: 36px; }
-  .w-10 { width: 30px; }
-  .h-10 { height: 30px; }
-  .w-8 { width: 22px; }
-  .h-8 { height: 22px; }
-  .w-5 { width: 16px; }
-  .h-5 { height: 16px; }
-  .w-4 { width: 14px; }
-  .h-4 { height: 14px; }
-
-  .border-t, .border-b, .border {
-    border-width: 1px;
-    border-color: #ddd;
-  }
-
-  .border-gray-200 { border-color: #ddd; }
-  .border-gray-100 { border-color: #eee; }
-
-  .overflow-hidden { overflow: visible; }
-  .animate-pulse { animation: none; }
-
-  .hover\:scale-\[1\.02\], .hover\:shadow-md, .hover\:border-purple-300, .hover\:bg-orange-50\/50, .hover\:border-orange-200 {
-    all: unset;
-  }
-
-  .transition-all, .duration-300 {
-    transition: none;
-  }
-
-  .backdrop-blur-sm {
-    backdrop-filter: none;
-  }
-
-  .flex-wrap { flex-wrap: wrap; }
-
-  .grid { display: flex; flex-wrap: wrap; }
-  .lg\:grid-cols-2, .md\:grid-cols-2 { display: flex; flex-wrap: wrap; }
-  .lg\:grid-cols-3 { display: flex; flex-wrap: wrap; }
-
-  .grid > div,
-  .lg\:grid-cols-2 > div,
-  .md\:grid-cols-2 > div {
-    flex: 1;
-    min-width: 48%;
-    margin-right: 4%;
-    margin-bottom: 8px;
-  }
-
-  .grid > div:nth-child(2n),
-  .lg\:grid-cols-2 > div:nth-child(2n),
-  .md\:grid-cols-2 > div:nth-child(2n) {
-    margin-right: 0;
-  }
-
-  .lg\:grid-cols-3 > div {
-    min-width: 31%;
-    margin-right: 3.5%;
-    margin-bottom: 8px;
-  }
-
-  .lg\:grid-cols-3 > div:nth-child(3n) {
-    margin-right: 0;
-  }
-
-  .hidden { display: none !important; }
-  .md\:flex { display: flex !important; }
-  .md\:hidden { display: none !important; }
-  .shrink-0 { flex-shrink: 0; }
-  .flex-1 { flex: 1; }
-  .ml-auto { margin-left: auto; }
-  .justify-center { justify-content: center; }
-  .items-center { align-items: center; }
-  .items-start { align-items: flex-start; }
-  .text-center { text-align: center; }
-
-  [style*="max-h-0"] {
-    max-height: none !important;
-    opacity: 1 !important;
-    overflow: visible !important;
-  }
-
-  [style*="max-h-[500px]"] {
-    max-height: none !important;
-  }
-
-  .cursor-pointer { cursor: default; }
-
-  svg {
-    max-width: 100%;
-    height: auto;
-    fill: #555;
-    color: #555;
-  }
-
-  ::-webkit-scrollbar { display: none; }
-
-  .bg-gray-50, .bg-orange-50\/50, .bg-indigo-50, .bg-blue-50, .bg-purple-50, .bg-green-50, .bg-yellow-50 {
-    background: white !important;
-    border: 1px solid #eee;
-  }
-
-  .bg-purple-100 { background: white !important; }
-  .bg-orange-100 { background: white !important; }
-  .bg-blue-100 { background: white !important; }
-  .bg-green-100 { background: white !important; }
-
-  .text-gray-500 { color: #666; }
-  .text-gray-600 { color: #444; }
-  .text-gray-800 { color: #222; }
-
-  .text-purple-600 { color: #555; }
-  .text-purple-700 { color: #444; }
-  .text-orange-600 { color: #555; }
-  .text-blue-600 { color: #555; }
-  .text-blue-700 { color: #444; }
-  .text-green-600 { color: #555; }
-  .text-green-700 { color: #444; }
-  .text-yellow-700 { color: #555; }
-  .text-indigo-600 { color: #555; }
-
-  .border-purple-200 { border-color: #eee; }
-  .border-orange-200 { border-color: #eee; }
-  .border-blue-200 { border-color: #eee; }
-  .border-green-200 { border-color: #eee; }
-  .border-yellow-200 { border-color: #eee; }
-  .border-indigo-200 { border-color: #eee; }
-
-  .bg-green-500 { background: #555 !important; }
-  .bg-purple-500 { background: #555 !important; }
-  .bg-orange-500 { background: #555 !important; }
-  .bg-blue-500 { background: #555 !important; }
-  .bg-indigo-500 { background: #555 !important; }
-
-  .font-bold { font-weight: 600; }
-  .font-semibold { font-weight: 500; }
-
-  .flex-col { flex-direction: row; }
-
-  .bg-gradient-to-r { background: white !important; }
-
-  .bg-green-500 { background: #555 !important; }
-
-  .truncate { white-space: normal; }
-
-  .border-4 { border-width: 1px; }
 }
