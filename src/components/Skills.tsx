@@ -40,17 +40,17 @@ const skillCategories = [
   }
 ];
 
-const colorMap: Record<string, { bg: string; text: string; border: string; icon: string }> = {
-  blue: { bg: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-200', icon: 'text-blue-600' },
-  green: { bg: 'bg-green-50', text: 'text-green-700', border: 'border-green-200', icon: 'text-green-600' },
-  purple: { bg: 'bg-purple-50', text: 'text-purple-700', border: 'border-purple-200', icon: 'text-purple-600' }
+const colorMap: Record<string, { bg: string; text: string; border: string; icon: string; iconBg: string }> = {
+  blue: { bg: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-100', icon: 'text-blue-600', iconBg: 'bg-blue-100' },
+  green: { bg: 'bg-green-50', text: 'text-green-700', border: 'border-green-100', icon: 'text-green-600', iconBg: 'bg-green-100' },
+  purple: { bg: 'bg-purple-50', text: 'text-purple-700', border: 'border-purple-100', icon: 'text-purple-600', iconBg: 'bg-purple-100' }
 };
 
 const Skills = () => {
   return (
     <section className="bg-white rounded-2xl p-6 card-shadow">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
+      <div className="section-title">
+        <div className="icon-box bg-gradient-to-br from-blue-500 to-blue-600">
           <Code className="w-5 h-5 text-white" />
         </div>
         <div>
@@ -59,26 +59,26 @@ const Skills = () => {
         </div>
       </div>
       
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         {skillCategories.map((category, index) => {
           const colors = colorMap[category.color];
           const Icon = category.icon;
           return (
             <div 
               key={index}
-              className={`${colors.bg} rounded-xl p-5 border ${colors.border} transition-all duration-300 hover:scale-[1.02] hover:shadow-md`}
+              className={`${colors.bg} rounded-xl p-5 border ${colors.border} transition-all duration-300 hover:shadow-md`}
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className={`w-10 h-10 ${colors.bg} rounded-lg flex items-center justify-center`}>
+                <div className={`w-9 h-9 ${colors.iconBg} rounded-lg flex items-center justify-center`}>
                   <Icon className={`w-5 h-5 ${colors.icon}`} />
                 </div>
-                <h3 className={`font-semibold text-lg ${colors.text}`}>{category.title}</h3>
+                <h3 className={`font-semibold text-base ${colors.text}`}>{category.title}</h3>
               </div>
-              <ul className="space-y-2.5">
+              <ul className="space-y-3">
                 {category.skills.map((skill, skillIndex) => (
-                  <li key={skillIndex} className="text-sm text-gray-600 flex items-start gap-2">
-                    <span className={`w-1.5 h-1.5 rounded-full ${colors.icon.replace('text-', 'bg-')} mt-1.5 shrink-0`}></span>
-                    <span className="leading-relaxed">{skill}</span>
+                  <li key={skillIndex} className="text-sm text-gray-600 flex items-start gap-2 line-height-optimal">
+                    <span className={`w-1.5 h-1.5 rounded-full ${colors.icon.replace('text-', 'bg-')} mt-2 shrink-0`}></span>
+                    <span>{skill}</span>
                   </li>
                 ))}
               </ul>

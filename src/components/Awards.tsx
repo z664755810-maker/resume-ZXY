@@ -20,8 +20,8 @@ const certificates = [
 const Awards = () => {
   return (
     <section className="bg-white rounded-2xl p-6 card-shadow">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-xl flex items-center justify-center">
+      <div className="section-title">
+        <div className="icon-box bg-gradient-to-br from-yellow-500 to-yellow-600">
           <Award className="w-5 h-5 text-white" />
         </div>
         <div>
@@ -34,22 +34,22 @@ const Awards = () => {
         <div className="mb-6">
           <div className="flex items-center gap-2 mb-4">
             <Award className="w-4 h-4 text-yellow-600" />
-            <h3 className="font-semibold text-gray-800">竞赛奖项</h3>
+            <h3 className="font-semibold text-gray-800 text-base">竞赛奖项</h3>
           </div>
           <div className="space-y-3">
             {awards.map((award, index) => (
               <div 
                 key={index}
-                className="flex items-start gap-4 bg-yellow-50 rounded-xl p-4"
+                className="flex items-start gap-4 bg-yellow-50 rounded-xl p-4 border border-yellow-100"
               >
                 <div className="w-8 h-8 bg-yellow-200 rounded-full flex items-center justify-center shrink-0">
                   <Award className="w-4 h-4 text-yellow-700" />
                 </div>
                 <div className="flex-1">
                   <h4 className="font-semibold text-gray-800 text-sm">{award.title}</h4>
-                  <div className="flex items-center gap-3 mt-1">
+                  <div className="flex items-center gap-3 mt-1.5">
                     <span className="text-xs text-gray-500">{award.issuer}</span>
-                    <div className="flex items-center gap-1 text-yellow-600">
+                    <div className="flex items-center gap-1.5 text-yellow-600">
                       <Clock className="w-3 h-3" />
                       <span className="text-xs font-medium">{award.year}</span>
                     </div>
@@ -65,22 +65,22 @@ const Awards = () => {
         <div className="pt-4 border-t border-gray-100">
           <div className="flex items-center gap-2 mb-4">
             <BadgeCheck className="w-4 h-4 text-green-600" />
-            <h3 className="font-semibold text-gray-800">职业证书</h3>
+            <h3 className="font-semibold text-gray-800 text-base">职业证书</h3>
           </div>
           <div className="space-y-3">
             {certificates.map((cert, index) => (
               <div 
                 key={index}
-                className="flex items-start gap-4 bg-green-50 rounded-xl p-4"
+                className="flex items-start gap-4 bg-green-50 rounded-xl p-4 border border-green-100"
               >
                 <div className="w-8 h-8 bg-green-200 rounded-full flex items-center justify-center shrink-0">
                   <BadgeCheck className="w-4 h-4 text-green-700" />
                 </div>
                 <div className="flex-1">
                   <h4 className="font-semibold text-gray-800 text-sm">{cert.title}</h4>
-                  <div className="flex items-center gap-3 mt-1">
+                  <div className="flex items-center gap-3 mt-1.5">
                     <span className="text-xs text-gray-500">{cert.issuer}</span>
-                    <div className="flex items-center gap-1 text-green-600">
+                    <div className="flex items-center gap-1.5 text-green-600">
                       <Clock className="w-3 h-3" />
                       <span className="text-xs font-medium">{cert.year}</span>
                     </div>

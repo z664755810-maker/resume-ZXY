@@ -13,21 +13,21 @@ const Header = () => {
               style={{ objectPosition: 'center 35%' }}
             />
           </div>
-          <div className="absolute -bottom-2 -right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full flex items-center gap-1">
+          <div className="absolute -bottom-2 -right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full flex items-center gap-1 shadow-md">
             <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span>
             大三在读
           </div>
         </div>
         
         <div className="flex-1 text-center md:text-left">
-          <h1 className="text-3xl font-bold mb-2">郑鑫源</h1>
+          <h1 className="text-3xl font-bold mb-3">郑鑫源</h1>
           <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-4">
-            <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">嵌入式软件开发</span>
-            <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">物联网开发</span>
-            <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">后端 / 全栈开发</span>
+            <span className="inline-flex items-center px-3 py-1.5 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">嵌入式软件开发</span>
+            <span className="inline-flex items-center px-3 py-1.5 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">物联网开发</span>
+            <span className="inline-flex items-center px-3 py-1.5 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">后端 / 全栈开发</span>
           </div>
           
-          <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-2.5 text-sm">
             <div className="flex items-center gap-2 text-white/90">
               <Phone className="w-4 h-4 shrink-0" />
               <span>19103865081</span>

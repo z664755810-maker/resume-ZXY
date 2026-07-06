@@ -41,26 +41,26 @@ const achievements = [
 const Experience = () => {
   return (
     <section className="bg-white rounded-2xl p-6 card-shadow">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center">
+      <div className="section-title">
+        <div className="icon-box bg-gradient-to-br from-orange-500 to-orange-600">
           <Building2 className="w-5 h-5 text-white" />
         </div>
         <div>
           <h2 className="text-xl font-bold text-gray-800">实习经历</h2>
           <p className="text-sm text-gray-500">天津市赛鸣科技有限公司</p>
         </div>
-        <div className="ml-auto flex items-center gap-1 achievement-badge">
+        <div className="ml-auto flex items-center gap-1.5 achievement-badge">
           <Award className="w-3 h-3" />
           <span>优秀实习生</span>
         </div>
       </div>
       
-      <div className="flex items-center gap-4 mb-6 pb-4 border-b border-gray-100">
+      <div className="flex flex-wrap items-center gap-4 mb-6 pb-4 border-b border-gray-100">
         <div className="flex items-center gap-2 text-gray-600">
           <Building2 className="w-5 h-5 shrink-0" />
           <span className="font-semibold">软件开发实习生</span>
         </div>
-        <div className="flex items-center gap-2 text-gray-500">
+        <div className="flex items-center gap-1.5 text-gray-500">
           <Clock className="w-4 h-4 shrink-0" />
           <span className="text-sm">2026.06 起</span>
         </div>
@@ -72,15 +72,15 @@ const Experience = () => {
           return (
             <div 
               key={index}
-              className="bg-gray-50 rounded-xl p-5 hover:bg-orange-50/50 transition-all duration-300 border border-transparent hover:border-orange-200"
+              className="bg-gray-50 rounded-xl p-5 hover:bg-orange-50/50 transition-all duration-300 border border-gray-100 hover:border-orange-200"
             >
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center shrink-0">
+                <div className="w-11 h-11 bg-orange-100 rounded-xl flex items-center justify-center shrink-0">
                   <Icon className="w-6 h-6 text-orange-600" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-bold text-gray-800 mb-2">{item.title}</h3>
-                  <p className="text-gray-600 text-sm mb-3 leading-relaxed">{item.description}</p>
+                  <h3 className="font-bold text-gray-800 text-base mb-2">{item.title}</h3>
+                  <p className="text-gray-600 text-sm mb-3 line-height-optimal">{item.description}</p>
                   <div className="flex flex-wrap gap-4">
                     {item.metrics.map((metric, metricIndex) => (
                       <div key={metricIndex} className="flex items-center gap-2">

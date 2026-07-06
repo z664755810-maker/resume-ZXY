@@ -87,8 +87,8 @@ const Projects = ({ isPrintMode = false }: ProjectsProps) => {
 
   return (
     <section className="bg-white rounded-2xl p-6 card-shadow">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center">
+      <div className="section-title">
+        <div className="icon-box bg-gradient-to-br from-purple-500 to-purple-600">
           <FolderOpen className="w-5 h-5 text-white" />
         </div>
         <div>
@@ -111,12 +111,12 @@ const Projects = ({ isPrintMode = false }: ProjectsProps) => {
                 onClick={() => toggleExpand(project.id)}
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center shrink-0">
+                  <div className="w-11 h-11 bg-purple-100 rounded-xl flex items-center justify-center shrink-0">
                     <Icon className="w-6 h-6 text-purple-600" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                      <h3 className="font-bold text-gray-800">{project.title}</h3>
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <h3 className="font-bold text-gray-800 text-base">{project.title}</h3>
                       {isExpanded ? (
                         <ChevronUp className="w-5 h-5 text-gray-400 shrink-0" />
                       ) : (
@@ -124,7 +124,7 @@ const Projects = ({ isPrintMode = false }: ProjectsProps) => {
                       )}
                     </div>
                     <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500">
-                      <span className="px-2 py-0.5 bg-purple-100 text-purple-700 rounded">{project.role}</span>
+                      <span className="inline-flex items-center px-2.5 py-1 bg-purple-100 text-purple-700 rounded-md">{project.role}</span>
                       <span>{project.period}</span>
                     </div>
                     <div className="flex flex-wrap gap-2 mt-2">
@@ -142,7 +142,7 @@ const Projects = ({ isPrintMode = false }: ProjectsProps) => {
                 <div className="p-5 pt-0">
                   <ul className="space-y-3">
                     {project.highlights.map((highlight, index) => (
-                      <li key={index} className="flex items-start gap-3 text-gray-600 text-sm leading-relaxed">
+                      <li key={index} className="flex items-start gap-3 text-gray-600 text-sm line-height-optimal">
                         <span className="w-6 h-6 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
                           {index + 1}
                         </span>
