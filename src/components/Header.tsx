@@ -24,7 +24,7 @@ const Header = () => {
           <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-4">
             <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">嵌入式软件开发</span>
             <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">物联网开发</span>
-            <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">后端开发实习生</span>
+            <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">后端 / 全栈开发</span>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">

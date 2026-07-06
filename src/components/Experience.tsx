@@ -3,7 +3,7 @@ import { Building2, Clock, Award, TrendingUp, Database, Network, Box } from 'luc
 const achievements = [
   {
     icon: Box,
-    title: '低代码平台业务模块搭建',
+    title: '独立负责低代码平台业务模块搭建',
     description: '基于用友低代码平台完成企业级业务模块搭建，独立设计表单、配置流程审批逻辑及数据可视化看板',
     metrics: [
       { label: '业务流程数字化覆盖率', value: '提升30%' },
@@ -12,7 +12,7 @@ const achievements = [
   },
   {
     icon: Database,
-    title: '后端逻辑与数据库开发',
+    title: '自主设计后端逻辑与数据库架构',
     description: '使用PyCharm开发后端逻辑，基于Navicat设计车间业务数据库架构，完成表关联、存储过程编写及索引优化',
     metrics: [
       { label: '查询效率', value: '提升25%' },
@@ -21,7 +21,7 @@ const achievements = [
   },
   {
     icon: Network,
-    title: '工业通信与数据采集',
+    title: '主动搭建工业通信与数据采集系统',
     description: '借助KEPServerEX 6配置工业通讯通道，对接10+台现场设备，实现温度、压力、运行状态等参数实时采集与批量入库',
     metrics: [
       { label: '采集频率', value: '1秒/次' },
@@ -30,7 +30,7 @@ const achievements = [
   },
   {
     icon: Box,
-    title: '物流管理系统开发',
+    title: '独立开发物流管理系统',
     description: '基于TraeCN框架搭建厂区物流管理系统，实现物料出入库、运输台账、库存盘点等核心功能',
     metrics: [
       { label: '库存盘点效率', value: '提升50%' }
