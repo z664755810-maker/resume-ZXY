@@ -77,19 +77,23 @@ body {
   }
   
   .skill-tag {
-    @apply inline-flex items-center px-3 py-1 text-sm font-medium rounded-full bg-blue-50 text-blue-700 border border-blue-100 leading-none;
+    @apply inline-flex items-center justify-center px-3 py-1 text-sm font-medium rounded-full bg-blue-50 text-blue-700 border border-blue-100 leading-none h-6;
+    line-height: 1 !important;
   }
   
   .tech-tag {
-    @apply inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-md bg-slate-100 text-slate-600 leading-none;
+    @apply inline-flex items-center justify-center px-2.5 py-1 text-xs font-medium rounded-md bg-slate-100 text-slate-600 leading-none h-5;
+    line-height: 1 !important;
   }
   
   .achievement-badge {
-    @apply inline-flex items-center px-2.5 py-1 text-xs font-semibold rounded-md bg-green-100 text-green-700 leading-none;
+    @apply inline-flex items-center justify-center px-2.5 py-1 text-xs font-semibold rounded-md bg-green-100 text-green-700 leading-none h-5;
+    line-height: 1 !important;
   }
   
   .tag-item {
-    @apply inline-flex items-center justify-center px-3 py-1 text-sm font-medium rounded-full leading-none;
+    @apply inline-flex items-center justify-center px-3 py-1 text-sm font-medium rounded-full leading-none h-6;
+    line-height: 1 !important;
   }
   
   .section-title {
