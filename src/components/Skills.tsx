@@ -1,4 +1,4 @@
-import { Code, Award, Microchip, Server, Terminal } from 'lucide-react';
+import { Code, Microchip, Server, Terminal } from 'lucide-react';
 
 const skillCategories = [
   {
@@ -85,18 +85,6 @@ const Skills = () => {
             </div>
           );
         })}
-      </div>
-      
-      <div className="mt-6 pt-6 border-t border-gray-100">
-        <div className="flex items-center gap-2 mb-3">
-          <Award className="w-5 h-5 text-yellow-500" />
-          <h3 className="font-semibold text-gray-800">证书</h3>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          <span className="px-4 py-2 bg-yellow-50 text-yellow-700 border border-yellow-200 rounded-lg text-sm font-medium">
-            物联网安装调试员职业技能证书
-          </span>
-        </div>
       </div>
     </section>
   );

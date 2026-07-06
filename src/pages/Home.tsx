@@ -6,12 +6,8 @@ import Experience from '../components/Experience';
 import Projects from '../components/Projects';
 import Awards from '../components/Awards';
 import SelfAssessment from '../components/SelfAssessment';
-import { Download, Printer, Loader2 } from 'lucide-react';
+import { Download, Loader2 } from 'lucide-react';
 import { generatePDF } from '../utils/pdfGenerator';
-
-const handlePrint = () => {
-  window.print();
-};
 
 const handleDownloadPDF = async () => {
   const resumeElement = document.getElementById('resume-content');
@@ -47,13 +43,6 @@ export default function Home() {
             <p className="text-gray-500 text-sm">郑鑫源 - 嵌入式软件开发 / 物联网开发 / 后端开发实习生</p>
           </div>
           <div className="flex gap-3">
-            <button 
-              onClick={handlePrint}
-              className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors duration-200 shadow-sm"
-            >
-              <Printer className="w-4 h-4" />
-              <span className="text-sm font-medium">打印简历</span>
-            </button>
             <button 
               onClick={handleDownloadPDFWithLoading}
               disabled={isGenerating}
