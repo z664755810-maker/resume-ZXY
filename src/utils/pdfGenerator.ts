@@ -9,7 +9,6 @@ const waitForImages = (root: HTMLElement) => {
       return new Promise<void>((resolve) => {
         img.addEventListener('load', () => resolve(), { once: true });
         img.addEventListener('error', () => resolve(), { once: true });
-        // 兜底超时
         setTimeout(resolve, 3000);
       });
     })
@@ -32,28 +31,22 @@ export const generatePDF = async (
     return;
   }
 
-  // 找到 PDF 视口容器（在 Home.tsx 中以 id="pdf-viewport" 包裹）
   const viewport = document.getElementById('pdf-viewport');
   const originalViewportStyle = viewport ? viewport.getAttribute('style') : null;
-  const originalVisibility = element.style.visibility;
 
   try {
-    // 截图前临时把 PDF 视口变成完全可见状态，确保 html2canvas 渲染 1:1
     if (viewport) {
       viewport.setAttribute(
         'style',
         'position: fixed; left: 0; top: 0; width: 794px; background: #ffffff; z-index: 2147483646; opacity: 1; pointer-events: none;'
       );
     }
-    // 避免动画/过渡对截图产生影响
-    element.style.visibility = 'visible';
 
-    // 等待字体与图片加载
     await waitForFonts();
     await waitForImages(element);
 
-    // 等待一帧让样式生效
     await new Promise(resolve => requestAnimationFrame(() => resolve(null)));
+    await new Promise(resolve => setTimeout(resolve, 500));
 
     const canvas = await html2canvas(element, {
       scale: 2,
@@ -73,13 +66,12 @@ export const generatePDF = async (
       format: 'a4',
     });
 
-    const pdfWidth = pdf.internal.pageSize.getWidth();   // 210
-    const pdfHeight = pdf.internal.pageSize.getHeight(); // 297
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = pdf.internal.pageSize.getHeight();
 
     const imgWidth = canvas.width;
     const imgHeight = canvas.height;
 
-    // 保持比例铺满 A4 宽度
     const ratio = pdfWidth / imgWidth;
     const imgFinalWidth = pdfWidth;
     const imgFinalHeight = imgHeight * ratio;
@@ -87,7 +79,6 @@ export const generatePDF = async (
     if (imgFinalHeight <= pdfHeight) {
       pdf.addImage(imgData, 'PNG', 0, 0, imgFinalWidth, imgFinalHeight);
     } else {
-      // 多页：按 A4 实际像素高度切片
       const pageHeightInCanvas = pdfHeight / ratio;
       let y = 0;
       let pageIndex = 0;
@@ -122,7 +113,6 @@ export const generatePDF = async (
   } catch (err) {
     console.error('PDF generation failed', err);
   } finally {
-    // 恢复原样（保持屏幕外隐藏）
     if (viewport) {
       if (originalViewportStyle !== null) {
         viewport.setAttribute('style', originalViewportStyle);
@@ -130,6 +120,5 @@ export const generatePDF = async (
         viewport.removeAttribute('style');
       }
     }
-    element.style.visibility = originalVisibility;
   }
 };
