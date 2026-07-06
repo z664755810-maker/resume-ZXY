@@ -81,7 +81,7 @@ const Projects = () => {
         </div>
         <div>
           <h2 className="text-xl font-bold text-gray-800">项目经历</h2>
-          <p className="text-sm text-gray-500">3个项目，覆盖嵌入式与全栈开发</p>
+          <p className="text-sm text-gray-500">代表性项目，覆盖嵌入式与全栈开发</p>
         </div>
       </div>
       
