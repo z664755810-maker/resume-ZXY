@@ -48,7 +48,7 @@ body {
 @media print {
   @page {
     size: A4 portrait;
-    margin: 15mm 20mm;
+    margin: 10mm 15mm;
     orphans: 4;
     widows: 4;
   }
@@ -57,8 +57,8 @@ body {
     background: white;
     margin: 0;
     padding: 0;
-    font-size: 11pt;
-    line-height: 1.5;
+    font-size: 9pt;
+    line-height: 1.4;
     font-family: 'Noto Sans SC', 'SimHei', 'Microsoft YaHei', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -70,7 +70,9 @@ body {
     color: #333;
   }
   
-  .no-print {
+  .no-print,
+  .trae-solo-badge-container,
+  [data-trae-solo-badge] {
     display: none !important;
   }
   
@@ -372,5 +374,27 @@ body {
   
   .text-center {
     text-align: center;
+  }
+  
+  [style*="max-h-0"] {
+    max-height: none !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+  }
+  
+  [style*="max-h-[500px]"] {
+    max-height: none !important;
+  }
+  
+  .cursor-pointer {
+    cursor: default;
+  }
+  
+  .ChevronUp, .ChevronDown {
+    display: none !important;
+  }
+  
+  ::-webkit-scrollbar {
+    display: none;
   }
 }
