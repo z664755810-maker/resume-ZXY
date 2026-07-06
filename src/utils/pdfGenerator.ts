@@ -79,12 +79,47 @@ export const generatePDF = async (
     if (imgFinalHeight <= pdfHeight) {
       pdf.addImage(imgData, 'PNG', 0, 0, imgFinalWidth, imgFinalHeight);
     } else {
+      // 多页切片：寻找最近的 <section> 边界，避免标题被切到两页
       const pageHeightInCanvas = pdfHeight / ratio;
+      const sections = Array.from(element.querySelectorAll('section'));
+      // 建立一个 y -> sectionTitle 的映射，便于断点决策
+      const sectionBoundaries: { y: number; title: string }[] = [];
+      let cumulativeY = 0;
+      for (const sec of sections) {
+        const rect = (sec as HTMLElement).getBoundingClientRect();
+        const top = (sec as HTMLElement).offsetTop;
+        const titleEl = sec.querySelector('h2');
+        sectionBoundaries.push({
+          y: top,
+          title: titleEl ? (titleEl.textContent || '').trim() : ''
+        });
+      }
+      sectionBoundaries.sort((a, b) => a.y - b.y);
+
       let y = 0;
       let pageIndex = 0;
 
       while (y < imgHeight) {
-        const sliceHeight = Math.min(pageHeightInCanvas, imgHeight - y);
+        let sliceHeight = Math.min(pageHeightInCanvas, imgHeight - y);
+        // 如果切到一半会切到 section 标题，则回退到上一个 section 起点
+        if (pageIndex > 0 || y > 0) {
+          // 寻找当前切片底部是否跨过 section 标题
+          const sliceEnd = y + sliceHeight;
+          for (const sb of sectionBoundaries) {
+            if (sb.y > y + 40 && sb.y < sliceEnd - 20) {
+              // 找到最近的 section 起点（往前推一个）
+              const idx = sectionBoundaries.findIndex(s => s.y === sb.y);
+              const prev = idx > 0 ? sectionBoundaries[idx - 1] : null;
+              const safeY = prev ? prev.y : sb.y;
+              if (safeY > y + 80) {
+                sliceHeight = safeY - y;
+              }
+              break;
+            }
+          }
+        }
+        sliceHeight = Math.max(sliceHeight, 100);
+
         const tempCanvas = document.createElement('canvas');
         tempCanvas.width = imgWidth;
         tempCanvas.height = sliceHeight;

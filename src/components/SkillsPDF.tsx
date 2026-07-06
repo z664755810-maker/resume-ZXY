@@ -40,17 +40,20 @@ const skillCategories = [
   }
 ];
 
-const colorMap: Record<string, { bg: string; text: string; border: string; icon: string; iconBg: string }> = {
-  blue: { bg: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-100', icon: 'text-blue-600', iconBg: 'bg-blue-100' },
-  green: { bg: 'bg-green-50', text: 'text-green-700', border: 'border-green-100', icon: 'text-green-600', iconBg: 'bg-green-100' },
-  purple: { bg: 'bg-purple-50', text: 'text-purple-700', border: 'border-purple-100', icon: 'text-purple-600', iconBg: 'bg-purple-100' }
+const colorMap: Record<string, { bg: string; text: string; border: string; icon: string; iconBg: string; bullet: string }> = {
+  blue: { bg: '#eff6ff', text: '#1d4ed8', border: '#dbeafe', icon: '#2563eb', iconBg: '#dbeafe', bullet: '#2563eb' },
+  green: { bg: '#f0fdf4', text: '#15803d', border: '#dcfce7', icon: '#16a34a', iconBg: '#dcfce7', bullet: '#16a34a' },
+  purple: { bg: '#faf5ff', text: '#7e22ce', border: '#f3e8ff', icon: '#9333ea', iconBg: '#f3e8ff', bullet: '#9333ea' }
 };
 
 const SkillsPDF = () => {
   return (
     <section className="bg-white rounded-2xl p-6">
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-600">
+        <div
+          className="w-10 h-10 rounded-xl flex items-center justify-center"
+          style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)' }}
+        >
           <Code className="w-5 h-5 text-white" />
         </div>
         <div>
@@ -66,18 +69,25 @@ const SkillsPDF = () => {
           return (
             <div
               key={index}
-              className={`${colors.bg} rounded-xl p-5 border ${colors.border}`}
+              className="rounded-xl p-5 border"
+              style={{ backgroundColor: colors.bg, borderColor: colors.border }}
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className={`w-9 h-9 ${colors.iconBg} rounded-lg flex items-center justify-center`}>
-                  <Icon className={`w-5 h-5 ${colors.icon}`} />
+                <div
+                  className="w-9 h-9 rounded-lg flex items-center justify-center"
+                  style={{ backgroundColor: colors.iconBg }}
+                >
+                  <Icon className="w-5 h-5" style={{ color: colors.icon }} />
                 </div>
-                <h3 className={`font-semibold text-base ${colors.text}`}>{category.title}</h3>
+                <h3 className="font-semibold text-base" style={{ color: colors.text }}>{category.title}</h3>
               </div>
               <ul className="space-y-3">
                 {category.skills.map((skill, skillIndex) => (
                   <li key={skillIndex} className="text-sm text-gray-600 flex items-start gap-2" style={{ lineHeight: '1.7' }}>
-                    <span className={`w-1.5 h-1.5 rounded-full ${colors.icon.replace('text-', 'bg-')} mt-2 shrink-0`}></span>
+                    <span
+                      className="w-1.5 h-1.5 rounded-full mt-2 shrink-0 inline-block"
+                      style={{ backgroundColor: colors.bullet }}
+                    ></span>
                     <span>{skill}</span>
                   </li>
                 ))}

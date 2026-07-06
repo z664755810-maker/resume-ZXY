@@ -10,8 +10,11 @@ const strengths = [
 const SelfAssessmentPDF = () => {
   return (
     <section className="bg-white rounded-2xl p-6">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-indigo-500 to-indigo-600">
+      <div className="flex items-center gap-3 mb-5">
+        <div
+          className="w-10 h-10 rounded-xl flex items-center justify-center"
+          style={{ background: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)' }}
+        >
           <User className="w-5 h-5 text-white" />
         </div>
         <div>
@@ -20,17 +23,21 @@ const SelfAssessmentPDF = () => {
         </div>
       </div>
 
-      <div className="space-y-6">
-        <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-xl p-5 border border-indigo-100">
+      <div className="space-y-5">
+        <div
+          className="rounded-xl p-5 border"
+          style={{ background: 'linear-gradient(to right, #eef2ff, #eff6ff)', borderColor: '#e0e7ff' }}
+        >
           <div className="flex items-start gap-3">
-            <Lightbulb className="w-5 h-5 text-indigo-600 mt-1 shrink-0" />
+            <Lightbulb className="w-5 h-5 mt-1 shrink-0" style={{ color: '#4f46e5' }} />
             <div>
               <h3 className="font-semibold text-gray-800 text-base mb-2">核心优势</h3>
               <div className="flex flex-wrap gap-2">
                 {strengths.map((strength, index) => (
                   <span
                     key={index}
-                    className="inline-flex items-center px-3 py-1.5 bg-white text-indigo-700 border border-indigo-200 rounded-full text-sm font-medium"
+                    className="inline-flex items-center justify-center px-3 rounded-full text-sm font-medium border"
+                    style={{ height: '26px', lineHeight: '1', backgroundColor: '#ffffff', color: '#4338ca', borderColor: '#c7d2fe' }}
                   >
                     {strength}
                   </span>
@@ -54,14 +61,14 @@ const SelfAssessmentPDF = () => {
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-gray-100">
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-3">
           <div className="flex items-center gap-2 text-gray-600">
-            <Target className="w-5 h-5 text-indigo-600 shrink-0" />
+            <Target className="w-5 h-5 shrink-0" style={{ color: '#4f46e5' }} />
             <span className="font-medium">职业目标：</span>
             <span className="text-sm">嵌入式软件开发 / 物联网开发 / 后端开发</span>
           </div>
           <div className="flex items-center gap-2 text-gray-600 ml-auto">
-            <Heart className="w-5 h-5 text-red-500 shrink-0" />
+            <Heart className="w-5 h-5 shrink-0" style={{ color: '#ef4444' }} />
             <span className="text-sm">意向城市：北京</span>
           </div>
         </div>

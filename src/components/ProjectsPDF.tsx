@@ -47,8 +47,11 @@ const projects = [
 const ProjectsPDF = () => {
   return (
     <section className="bg-white rounded-2xl p-6">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-purple-500 to-purple-600">
+      <div className="flex items-center gap-3 mb-5">
+        <div
+          className="w-10 h-10 rounded-xl flex items-center justify-center"
+          style={{ background: 'linear-gradient(135deg, #a855f7 0%, #9333ea 100%)' }}
+        >
           <FolderOpen className="w-5 h-5 text-white" />
         </div>
         <div>
@@ -63,33 +66,51 @@ const ProjectsPDF = () => {
           return (
             <div
               key={project.title}
-              className="border border-gray-200 rounded-xl overflow-hidden"
+              className="rounded-xl overflow-hidden border"
+              style={{ borderColor: '#e5e7eb' }}
             >
-              <div className="p-5 bg-gray-50">
+              <div style={{ backgroundColor: '#f9fafb' }} className="p-5">
                 <div className="flex items-start gap-4">
-                  <div className="w-11 h-11 bg-purple-100 rounded-xl flex items-center justify-center shrink-0">
-                    <Icon className="w-6 h-6 text-purple-600" />
+                  <div
+                    className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
+                    style={{ backgroundColor: '#f3e8ff' }}
+                  >
+                    <Icon className="w-6 h-6" style={{ color: '#9333ea' }} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-bold text-gray-800 text-base mb-1.5">{project.title}</h3>
+                    <h3 className="font-bold text-gray-800 text-base mb-2">{project.title}</h3>
                     <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500">
-                      <span className="inline-flex items-center justify-center px-2.5 py-1 bg-purple-100 text-purple-700 rounded-md text-sm font-medium">{project.role}</span>
+                      <span
+                        className="inline-flex items-center justify-center px-2.5 rounded-md text-sm font-medium"
+                        style={{ height: '24px', lineHeight: '1', backgroundColor: '#f3e8ff', color: '#7e22ce' }}
+                      >
+                        {project.role}
+                      </span>
                       <span>{project.period}</span>
                     </div>
                     <div className="flex flex-wrap gap-2 mt-2">
                       {project.techStack.map((tech, index) => (
-                        <span key={index} className="inline-flex items-center justify-center px-2.5 py-1 text-xs font-medium rounded-md bg-slate-100 text-slate-600">{tech}</span>
+                        <span
+                          key={index}
+                          className="inline-flex items-center justify-center px-2.5 rounded-md text-xs font-medium"
+                          style={{ height: '20px', lineHeight: '1', backgroundColor: '#f1f5f9', color: '#475569' }}
+                        >
+                          {tech}
+                        </span>
                       ))}
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="p-5 pt-0">
+              <div className="p-5">
                 <ul className="space-y-3">
                   {project.highlights.map((highlight, index) => (
                     <li key={index} className="flex items-start gap-3 text-gray-600 text-sm" style={{ lineHeight: '1.7' }}>
-                      <span className="w-[1.4em] h-[1.4em] bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-[0.7em] font-bold shrink-0">
+                      <span
+                        className="w-[1.4em] h-[1.4em] rounded-full flex items-center justify-center text-[0.7em] font-bold shrink-0"
+                        style={{ backgroundColor: '#f3e8ff', color: '#7e22ce', lineHeight: '1' }}
+                      >
                         {index + 1}
                       </span>
                       <span>{highlight}</span>

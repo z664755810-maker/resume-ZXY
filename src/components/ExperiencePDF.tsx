@@ -41,21 +41,27 @@ const achievements = [
 const ExperiencePDF = () => {
   return (
     <section className="bg-white rounded-2xl p-6">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-orange-500 to-orange-600">
+      <div className="flex items-center gap-3 mb-5">
+        <div
+          className="w-10 h-10 rounded-xl flex items-center justify-center"
+          style={{ background: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)' }}
+        >
           <Building2 className="w-5 h-5 text-white" />
         </div>
         <div>
           <h2 className="text-xl font-bold text-gray-800">实习经历</h2>
           <p className="text-sm text-gray-500">天津市赛鸣科技有限公司</p>
         </div>
-        <div className="ml-auto flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-md bg-green-100 text-green-700">
+        <div
+          className="ml-auto flex items-center justify-center gap-1 px-2.5 rounded-md text-xs font-semibold shrink-0"
+          style={{ height: '22px', lineHeight: '1', backgroundColor: '#dcfce7', color: '#15803d' }}
+        >
           <Award className="w-3 h-3" />
-          <span>优秀实习生</span>
+          <span style={{ lineHeight: '1' }}>优秀实习生</span>
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center gap-4 mb-6 pb-4 border-b border-gray-100">
+      <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mb-5">
         <div className="flex items-center gap-2 text-gray-600">
           <Building2 className="w-5 h-5 shrink-0" />
           <span className="font-semibold">软件开发实习生</span>
@@ -72,11 +78,15 @@ const ExperiencePDF = () => {
           return (
             <div
               key={index}
-              className="bg-gray-50 rounded-xl p-5 border border-gray-100"
+              className="rounded-xl p-5 border"
+              style={{ backgroundColor: '#f9fafb', borderColor: '#f3f4f6' }}
             >
               <div className="flex items-start gap-4">
-                <div className="w-11 h-11 bg-orange-100 rounded-xl flex items-center justify-center shrink-0">
-                  <Icon className="w-6 h-6 text-orange-600" />
+                <div
+                  className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
+                  style={{ backgroundColor: '#ffedd5' }}
+                >
+                  <Icon className="w-6 h-6" style={{ color: '#ea580c' }} />
                 </div>
                 <div className="flex-1">
                   <h3 className="font-bold text-gray-800 text-base mb-2">{item.title}</h3>
@@ -84,9 +94,9 @@ const ExperiencePDF = () => {
                   <div className="flex flex-wrap gap-4">
                     {item.metrics.map((metric, metricIndex) => (
                       <div key={metricIndex} className="flex items-center gap-2">
-                        <TrendingUp className="w-4 h-4 text-green-500 shrink-0" />
+                        <TrendingUp className="w-4 h-4 shrink-0" style={{ color: '#22c55e' }} />
                         <span className="text-sm text-gray-500">{metric.label}</span>
-                        <span className="text-sm font-bold text-green-600">{metric.value}</span>
+                        <span className="text-sm font-bold" style={{ color: '#16a34a' }}>{metric.value}</span>
                       </div>
                     ))}
                   </div>
