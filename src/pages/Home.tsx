@@ -6,31 +6,22 @@ import Experience from '../components/Experience';
 import Projects from '../components/Projects';
 import Awards from '../components/Awards';
 import SelfAssessment from '../components/SelfAssessment';
+import ResumePDFView from '../components/ResumePDFView';
 import { Download, Loader2 } from 'lucide-react';
 import { generatePDF } from '../utils/pdfGenerator';
 
-const handleDownloadPDF = async () => {
-  const resumeElement = document.getElementById('resume-content');
-  if (resumeElement) {
-    await generatePDF('resume-content', '郑鑫源-简历');
-  }
-};
-
 export default function Home() {
   const [isGenerating, setIsGenerating] = useState(false);
-  const [isPrintMode, setIsPrintMode] = useState(false);
 
   const handleDownloadPDFWithLoading = async () => {
     setIsGenerating(true);
-    setIsPrintMode(true);
     
-    await new Promise(resolve => setTimeout(resolve, 500));
+    await new Promise(resolve => setTimeout(resolve, 300));
     
     try {
-      await handleDownloadPDF();
+      await generatePDF('pdf-resume-content', '郑鑫源-简历');
     } finally {
       setIsGenerating(false);
-      setIsPrintMode(false);
     }
   };
 
@@ -66,7 +57,7 @@ export default function Home() {
             <Awards />
           </div>
           <Experience />
-          <Projects isPrintMode={isPrintMode} />
+          <Projects isPrintMode={false} />
           <SelfAssessment />
         </div>
         
@@ -74,6 +65,20 @@ export default function Home() {
           <p>© 2026 郑鑫源 - 求职简历</p>
           <p className="mt-1">联系方式：19103865081 | 664755810@qq.com</p>
         </footer>
+      </div>
+      
+      <div 
+        className="fixed left-0 top-0 opacity-0 pointer-events-none"
+        style={{ 
+          width: '794px', 
+          background: '#ffffff',
+          padding: '32px',
+          transform: 'translate(-9999px, -9999px)'
+        }}
+      >
+        <div className="max-w-4xl mx-auto space-y-6">
+          <ResumePDFView />
+        </div>
       </div>
     </div>
   );

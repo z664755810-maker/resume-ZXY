@@ -14,39 +14,6 @@ export const generatePDF = async (elementId: string, fileName: string = 'resume'
     backgroundColor: null,
     logging: false,
     allowTaint: true,
-    onclone: (clonedDoc) => {
-      const clonedElement = clonedDoc.getElementById(elementId);
-      if (clonedElement) {
-        clonedElement.style.background = 'transparent';
-      }
-      
-      const maxHeightElements = clonedDoc.querySelectorAll('[style*="max-h-0"]');
-      maxHeightElements.forEach(el => {
-        const style = el.getAttribute('style') || '';
-        const newStyle = style.replace(/max-h-0/g, 'max-h-[9999px]').replace(/opacity:\s*0/g, 'opacity: 1');
-        el.setAttribute('style', newStyle);
-        el.style.display = 'block';
-        el.style.overflow = 'visible';
-        el.style.height = 'auto';
-      });
-      
-      const overflowHiddenElements = clonedDoc.querySelectorAll('.overflow-hidden');
-      overflowHiddenElements.forEach(el => {
-        el.classList.remove('overflow-hidden');
-        el.style.overflow = 'visible';
-      });
-      
-      const cursorPointerElements = clonedDoc.querySelectorAll('.cursor-pointer');
-      cursorPointerElements.forEach(el => {
-        el.classList.remove('cursor-pointer');
-        el.style.cursor = 'default';
-      });
-      
-      const noPrintElements = clonedDoc.querySelectorAll('.no-print');
-      noPrintElements.forEach(el => {
-        el.style.display = 'none';
-      });
-    },
   });
 
   const imgData = canvas.toDataURL('image/png');
