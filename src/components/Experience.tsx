@@ -57,11 +57,11 @@ const Experience = () => {
       
       <div className="flex items-center gap-4 mb-6 pb-4 border-b border-gray-100">
         <div className="flex items-center gap-2 text-gray-600">
-          <Building2 className="w-5 h-5" />
+          <Building2 className="w-5 h-5 shrink-0" />
           <span className="font-semibold">软件开发实习生</span>
         </div>
         <div className="flex items-center gap-2 text-gray-500">
-          <Clock className="w-4 h-4" />
+          <Clock className="w-4 h-4 shrink-0" />
           <span className="text-sm">2026.06 起</span>
         </div>
       </div>
@@ -80,11 +80,11 @@ const Experience = () => {
                 </div>
                 <div className="flex-1">
                   <h3 className="font-bold text-gray-800 mb-2">{item.title}</h3>
-                  <p className="text-gray-600 text-sm mb-3">{item.description}</p>
+                  <p className="text-gray-600 text-sm mb-3 leading-relaxed">{item.description}</p>
                   <div className="flex flex-wrap gap-4">
                     {item.metrics.map((metric, metricIndex) => (
                       <div key={metricIndex} className="flex items-center gap-2">
-                        <TrendingUp className="w-4 h-4 text-green-500" />
+                        <TrendingUp className="w-4 h-4 text-green-500 shrink-0" />
                         <span className="text-sm text-gray-500">{metric.label}</span>
                         <span className="text-sm font-bold text-green-600">{metric.value}</span>
                       </div>

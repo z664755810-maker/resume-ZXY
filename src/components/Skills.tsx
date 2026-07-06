@@ -1,4 +1,4 @@
-import { Cpu, Code, Network, Globe, Database, Wrench, Award, Microchip, Server, Terminal } from 'lucide-react';
+import { Code, Award, Microchip, Server, Terminal } from 'lucide-react';
 
 const skillCategories = [
   {
@@ -78,7 +78,7 @@ const Skills = () => {
                 {category.skills.map((skill, skillIndex) => (
                   <li key={skillIndex} className="text-sm text-gray-600 flex items-start gap-2">
                     <span className={`w-1.5 h-1.5 rounded-full ${colors.icon.replace('text-', 'bg-')} mt-1.5 shrink-0`}></span>
-                    {skill}
+                    <span className="leading-relaxed">{skill}</span>
                   </li>
                 ))}
               </ul>

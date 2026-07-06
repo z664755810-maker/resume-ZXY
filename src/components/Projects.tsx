@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FolderOpen, ChevronDown, ChevronUp, Cpu, Globe, ShoppingCart } from 'lucide-react';
+import { FolderOpen, ChevronDown, ChevronUp, Cpu, Globe } from 'lucide-react';
 
 interface Project {
   id: number;
@@ -103,7 +103,7 @@ const Projects = () => {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <h3 className="font-bold text-gray-800 truncate">{project.title}</h3>
+                      <h3 className="font-bold text-gray-800">{project.title}</h3>
                       {project.expanded ? (
                         <ChevronUp className="w-5 h-5 text-gray-400 shrink-0" />
                       ) : (
@@ -129,7 +129,7 @@ const Projects = () => {
                 <div className="p-5 pt-0">
                   <ul className="space-y-3">
                     {project.highlights.map((highlight, index) => (
-                      <li key={index} className="flex items-start gap-3 text-gray-600 text-sm">
+                      <li key={index} className="flex items-start gap-3 text-gray-600 text-sm leading-relaxed">
                         <span className="w-6 h-6 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
                           {index + 1}
                         </span>

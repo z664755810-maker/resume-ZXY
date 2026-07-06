@@ -23,7 +23,7 @@ const Education = () => {
             <div className="flex items-center justify-between mb-3">
               <h3 className="font-bold text-gray-800">天津理工大学中环信息学院</h3>
               <div className="flex items-center gap-1 text-sm text-gray-500">
-                <Clock className="w-4 h-4" />
+                <Clock className="w-4 h-4 shrink-0" />
                 <span>2023.09 – 2027.06</span>
               </div>
             </div>
