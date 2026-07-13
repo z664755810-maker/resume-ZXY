@@ -1,4 +1,4 @@
-import { Code, Microchip, Server, Terminal } from 'lucide-react';
+import { Code, Microchip, Server, Terminal, Sparkles } from 'lucide-react';
 
 const skillCategories = [
   {
@@ -37,13 +37,27 @@ const skillCategories = [
       'Navicat数据库管理'
     ],
     color: 'purple'
+  },
+  {
+    icon: Sparkles,
+    title: 'AI与自动化',
+    skills: [
+      'Prompt Engineering（提示词工程）',
+      'LLM API集成（OpenAI、Claude、Kimi等）',
+      'AI智能体（Agent）架构设计',
+      '大模型基础：Transformer、Token机制、上下文窗口',
+      '自动化工作流构建（连接API、数据处理脚本）',
+      'AI辅助开发：代码生成、调试、技术文档编写'
+    ],
+    color: 'orange'
   }
 ];
 
 const colorMap: Record<string, { bg: string; text: string; border: string; icon: string; iconBg: string; bullet: string }> = {
   blue: { bg: '#eff6ff', text: '#1d4ed8', border: '#dbeafe', icon: '#2563eb', iconBg: '#dbeafe', bullet: '#2563eb' },
   green: { bg: '#f0fdf4', text: '#15803d', border: '#dcfce7', icon: '#16a34a', iconBg: '#dcfce7', bullet: '#16a34a' },
-  purple: { bg: '#faf5ff', text: '#7e22ce', border: '#f3e8ff', icon: '#9333ea', iconBg: '#f3e8ff', bullet: '#9333ea' }
+  purple: { bg: '#faf5ff', text: '#7e22ce', border: '#f3e8ff', icon: '#9333ea', iconBg: '#f3e8ff', bullet: '#9333ea' },
+  orange: { bg: '#fff7ed', text: '#c2410c', border: '#ffedd5', icon: '#ea580c', iconBg: '#ffedd5', bullet: '#ea580c' }
 };
 
 const SkillsPDF = () => {
@@ -62,7 +76,7 @@ const SkillsPDF = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {skillCategories.map((category, index) => {
           const colors = colorMap[category.color];
           const Icon = category.icon;

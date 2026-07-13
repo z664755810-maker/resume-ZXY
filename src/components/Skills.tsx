@@ -1,4 +1,4 @@
-import { Code, Microchip, Server, Terminal } from 'lucide-react';
+import { Code, Microchip, Server, Terminal, Sparkles } from 'lucide-react';
 
 const skillCategories = [
   {
@@ -37,13 +37,27 @@ const skillCategories = [
       'Navicat数据库管理'
     ],
     color: 'purple'
+  },
+  {
+    icon: Sparkles,
+    title: 'AI与自动化',
+    skills: [
+      'Prompt Engineering（提示词工程）',
+      'LLM API集成（OpenAI、Claude、Kimi等）',
+      'AI智能体（Agent）架构设计',
+      '大模型基础：Transformer、Token机制、上下文窗口',
+      '自动化工作流构建（连接API、数据处理脚本）',
+      'AI辅助开发：代码生成、调试、技术文档编写'
+    ],
+    color: 'orange'
   }
 ];
 
 const colorMap: Record<string, { bg: string; text: string; border: string; icon: string; iconBg: string }> = {
   blue: { bg: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-100', icon: 'text-blue-600', iconBg: 'bg-blue-100' },
   green: { bg: 'bg-green-50', text: 'text-green-700', border: 'border-green-100', icon: 'text-green-600', iconBg: 'bg-green-100' },
-  purple: { bg: 'bg-purple-50', text: 'text-purple-700', border: 'border-purple-100', icon: 'text-purple-600', iconBg: 'bg-purple-100' }
+  purple: { bg: 'bg-purple-50', text: 'text-purple-700', border: 'border-purple-100', icon: 'text-purple-600', iconBg: 'bg-purple-100' },
+  orange: { bg: 'bg-orange-50', text: 'text-orange-700', border: 'border-orange-100', icon: 'text-orange-600', iconBg: 'bg-orange-100' }
 };
 
 const Skills = () => {
@@ -59,7 +73,7 @@ const Skills = () => {
         </div>
       </div>
       
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {skillCategories.map((category, index) => {
           const colors = colorMap[category.color];
           const Icon = category.icon;

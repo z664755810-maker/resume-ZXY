@@ -1,10 +1,10 @@
 import { User, Target, Lightbulb, Heart } from 'lucide-react';
 
 const strengths = [
-  '嵌入式与全栈复合实践',
-  '工业物联网落地经验',
-  '复杂问题拆解',
-  'LLM协同开发'
+  'AI Native思维模式',
+  'Prompt Engineering实战',
+  'LLM智能体架构设计',
+  '复杂问题拆解与SOP构建'
 ];
 
 const SelfAssessmentPDF = () => {
@@ -49,15 +49,15 @@ const SelfAssessmentPDF = () => {
 
         <div className="space-y-4">
           <p className="text-gray-600 text-sm" style={{ lineHeight: '1.7' }}>
-            计算机科学与技术专业大三学生，具备从嵌入式底层驱动到Web全栈应用的真实项目交付经验。实习期间独立完成工业物联网数据采集、低代码平台配置及车间管理系统开发，获评"优秀实习生"。
+            计算机科学与技术专业大三学生，是ChatGPT/Claude/Kimi的重度依赖者，具备"AI Native"思维模式——遇到问题的本能反应是"这能不能用AI解决？"。在京东进销存系统项目中，独立设计并实现了4种AI智能体角色，深入实践Prompt Engineering，通过自然语言查询实现自动化数据分析，将业务人员效率提升3倍。
           </p>
 
           <p className="text-gray-600 text-sm" style={{ lineHeight: '1.7' }}>
-            具备卓越的快速学习与实战落地能力：擅长利用LLM等先进工具提升开发效率，但不止于代码生成——核心价值在于对复杂业务场景的准确解析与系统性拆解，能够将模糊需求转化为可执行的技术方案，并以高质量产出推动项目闭环。
+            精通Prompt Engineering：熟练运用角色扮演法、思维链（Chain of Thought）、Few-shot示例、温度调节等技巧，能够将复杂任务拆解为清晰的SOP。在项目开发中全程使用AI工具，从需求分析、技术方案设计到代码生成与调试，将开发周期缩短约40%，但核心价值在于对业务场景的准确解析与系统性拆解，而非单纯依赖代码生成。
           </p>
 
           <p className="text-gray-600 text-sm" style={{ lineHeight: '1.7' }}>
-            对智能制造、物联网、企业数字化等方向有强烈兴趣与探索热情。性格务实自驱，乐于在真实业务压力中快速迭代认知、积累行业经验。现阶段目标明确：锚定一个技术方向，以最快速度深入扎根，在实践中构建长期竞争力，实现从"项目实现者"到"问题解决专家"的跃迁。
+            对大模型基础概念有深入理解：熟悉Transformer架构、Token机制、上下文窗口限制、微调与提示工程的区别等核心知识。具备Python与JavaScript编程能力，能够编写"胶水代码"连接各种API。对AI领域怀有极高热情，坚信AI正在重构所有行业，渴望成为"会用AI的那一批人"，而非只会"熟练使用Office"的传统开发者。
           </p>
         </div>
 
@@ -65,7 +65,7 @@ const SelfAssessmentPDF = () => {
           <div className="flex items-center gap-2 text-gray-600">
             <Target className="w-5 h-5 shrink-0" style={{ color: '#4f46e5' }} />
             <span className="font-medium">职业目标：</span>
-            <span className="text-sm">嵌入式软件开发 / 物联网开发 / 后端开发</span>
+            <span className="text-sm">AI相关岗位（AI实习生 / AI学徒 / AI产品/工程方向）</span>
           </div>
           <div className="flex items-center gap-2 text-gray-600 ml-auto">
             <Heart className="w-5 h-5 shrink-0" style={{ color: '#ef4444' }} />
