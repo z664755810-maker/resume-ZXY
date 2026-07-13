@@ -42,12 +42,11 @@ const skillCategories = [
     icon: Sparkles,
     title: 'AI与自动化',
     skills: [
-      'Prompt Engineering（提示词工程）',
-      'LLM API集成（OpenAI、Claude、Kimi等）',
-      'AI智能体（Agent）架构设计',
-      '大模型基础：Transformer、Token机制、上下文窗口',
-      '自动化工作流构建（连接API、数据处理脚本）',
-      'AI辅助开发：代码生成、调试、技术文档编写'
+      '基于TRAE IDE的AI辅助开发实践',
+      'AI智能体（Agent）角色设计与提示词配置',
+      'LLM API调用与集成经验',
+      '了解大模型基础概念：Transformer架构、Token机制、上下文窗口',
+      'Python/JavaScript脚本编写，连接API实现自动化工作流'
     ],
     color: 'orange'
   }

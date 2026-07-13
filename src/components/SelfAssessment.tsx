@@ -42,15 +42,15 @@ const SelfAssessment = () => {
         
         <div className="space-y-4">
           <p className="text-gray-600 text-sm line-height-optimal">
-            计算机科学与技术专业大三学生，是ChatGPT/Claude/Kimi的重度依赖者，具备"AI Native"思维模式——遇到问题的本能反应是"这能不能用AI解决？"。在京东进销存系统项目中，独立设计并实现了4种AI智能体角色，深入实践Prompt Engineering，通过自然语言查询实现自动化数据分析，将业务人员效率提升3倍。
+            计算机科学与技术专业大三学生，在京东进销存系统项目中独立完成了4种AI智能体角色（通用助手、库存专家、销售顾问、报表分析师）的设计与实现，通过为不同角色配置针对性的系统提示词与专业知识库，实现了基于自然语言的业务数据查询与分析功能。
           </p>
           
           <p className="text-gray-600 text-sm line-height-optimal">
-            精通Prompt Engineering：熟练运用角色扮演法、思维链（Chain of Thought）、Few-shot示例、温度调节等技巧，能够将复杂任务拆解为清晰的SOP。在项目开发中全程使用AI工具，从需求分析、技术方案设计到代码生成与调试，将开发周期缩短约40%，但核心价值在于对业务场景的准确解析与系统性拆解，而非单纯依赖代码生成。
+            在日常开发中熟练使用TRAE IDE等AI编程工具辅助需求分析、技术方案设计与代码实现，善于将复杂开发任务拆解为清晰的执行步骤。注重对业务场景的理解，能够将模糊需求转化为可落地的技术方案，并在AI辅助下高质量完成开发。
           </p>
           
           <p className="text-gray-600 text-sm line-height-optimal">
-            对大模型基础概念有深入理解：熟悉Transformer架构、Token机制、上下文窗口限制、微调与提示工程的区别等核心知识。具备Python与JavaScript编程能力，能够编写"胶水代码"连接各种API。对AI领域怀有极高热情，坚信AI正在重构所有行业，渴望成为"会用AI的那一批人"，而非只会"熟练使用Office"的传统开发者。
+            了解大模型基础概念，包括Transformer架构的基本原理、Token机制、上下文窗口限制等。具备Python与JavaScript编程能力，能够编写脚本连接各类API实现自动化工作流。对AI领域有浓厚兴趣与探索热情，持续关注AI工具在实际业务中的落地应用，希望能够在实习中深入学习AI产品化与工程化的完整流程。
           </p>
         </div>
         
